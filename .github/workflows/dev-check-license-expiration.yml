@@ -1,0 +1,14 @@
+name: DEV Check Practitioner Licenses Expiration Cron
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+env:
+  TZ: "America/Denver"
+jobs:
+  dev-check-license-expiration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call API endpoint
+        run: |
+          curl -X POST https://dev.resonantdx.com/api/cron/license \
+            -H "github-api-key: ${{ secrets.CRON_API_KEY }}"

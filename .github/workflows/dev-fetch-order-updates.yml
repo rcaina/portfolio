@@ -1,0 +1,14 @@
+name: DEV Update Service Requests Cron
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+env:
+  TZ: "America/Denver"
+jobs:
+  dev-fetch-order-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Service Request Update API endpoint
+        run: |
+          curl -X POST https://dev.resonantdx.com/api/cron/wasatch-biolabs/pull-service-updates \
+            -H "github-api-key: ${{ secrets.CRON_API_KEY }}"

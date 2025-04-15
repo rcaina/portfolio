@@ -1,0 +1,80 @@
+/* Import fonts: Degular Variable from Adobe Fonts, IBM Plex Sans from Google Fonts */
+@import url("https://use.typekit.net/lny5tsf.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 95%; /* Converted from #f2f2f2 */
+    --foreground: 241.7 39.1% 35.7%; /* Converted from #3A397E */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+
+    /* Fonts */
+    --font-body: "IBM Plex Sans", sans-serif;
+    --font-heading: "Degular Variable", sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-weight: 400; /* Default regular font weight for body text */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 400; /* Default to semibold for headings */
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-weight: 400; /* Regular for paragraphs */
+  }
+
+  em,
+  i {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-style: italic; /* Light italic for emphasized text */
+  }
+}

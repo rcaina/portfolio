@@ -1,0 +1,559 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id               String           @id @default(cuid())
+  stripeId         String           @unique
+  name             String
+  type             OrganizationType @default(CLINICAL)
+  billingEmails    String[]
+  addresses        Address[]        @relation("organizationAddress")
+  billingAddresses Address[]        @relation("organizationBillingAddress")
+  accounts         Account[]
+  patients         Patient[]        @relation("organizationPatient")
+  kitOrder         KitOrder[]
+  project          Project[]
+  orders           Order[]
+  deactivated      Boolean          @default(false)
+  deleted          Boolean          @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index(fields: [name])
+}
+
+model Patient {
+  id                  String           @id @default(cuid())
+  email               String
+  medicalRecordNumber String           @unique
+  firstName           String
+  lastName            String
+  fullName            String
+  phoneNumber         String?
+  dateOfBirth         DateTime
+  sex                 SexType
+  image               String?
+  stripeId            String?
+  practitionerId      String?
+  practitioner        Employee?        @relation(fields: [practitionerId], references: [id])
+  deleted             Boolean          @default(false)
+  organizationId      String
+  organization        Organization     @relation("organizationPatient", fields: [organizationId], references: [id])
+  addressId           String?
+  address             Address?         @relation("patientAddress", fields: [addressId], references: [id])
+  billingAddressId    String?
+  billingAddress      Address?         @relation("patientBillingAddress", fields: [billingAddressId], references: [id])
+  serviceRequest      ServiceRequest[]
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  @@index(fields: [fullName])
+  @@index(fields: [email])
+  @@index(fields: [firstName])
+  @@index(fields: [lastName])
+}
+
+model Employee {
+  id                  String               @id @default(cuid())
+  email               String               @unique
+  firstName           String
+  lastName            String
+  fullName            String
+  phoneNumber         String?
+  emailVerified       DateTime?
+  password            String?
+  accounts            Account[]
+  reportsToId         String?
+  reportsTo           Employee?            @relation("reportsTo", fields: [reportsToId], references: [id])
+  employees           Employee[]           @relation("reportsTo")
+  practiceType        PracticeType?
+  nationalProviderId  String?
+  image               String?
+  governmentIdS3Key   String?
+  licenses            License[]
+  attachedFiles       S3File[]
+  patients            Patient[]
+  serviceRequest      ServiceRequest[]
+  passwordResetTokens passwordResetToken[]
+  deleted             Boolean              @default(false)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+
+  @@index(fields: [email])
+  @@index(fields: [fullName])
+  @@index(fields: [firstName])
+  @@index(fields: [lastName])
+  @@index(fields: [practiceType])
+  @@index(fields: [nationalProviderId])
+  @@index(fields: [deleted])
+}
+
+model Account {
+  id             String       @id @default(cuid())
+  role           Role
+  accountOwner   Boolean      @default(false)
+  employee       Employee     @relation(fields: [employeeId], references: [id])
+  employeeId     String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  deleted        Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([employeeId, organizationId])
+  @@index([role])
+  @@index([accountOwner])
+}
+
+model License {
+  id                  String        @id @default(cuid())
+  status              LicenseStatus @default(PENDING_APPROVAL)
+  number              String
+  state               String
+  effectiveDate       DateTime
+  expirationDate      DateTime
+  practitionerId      String
+  practitioner        Employee      @relation(fields: [practitionerId], references: [id])
+  medicalLicenseS3Key String?
+  verificationEventId String?       @unique
+  verificationEvent   Event?        @relation("licenseVerification", fields: [verificationEventId], references: [id])
+  expiredEventId      String?       @unique
+  expiredEvent        Event?        @relation("licenseExpiration", fields: [expiredEventId], references: [id])
+  deleted             Boolean       @default(false)
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  @@index([number])
+  @@index([state])
+  @@index([effectiveDate])
+  @@index([expirationDate])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model passwordResetToken {
+  id         String    @id @default(cuid())
+  token      String    @unique
+  createdAt  DateTime  @default(now())
+  expiration DateTime  @default(now())
+  resetAt    DateTime?
+  employeeId String
+  employee   Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@unique([id, token])
+}
+
+model Address {
+  id                    String         @id @default(cuid())
+  label                 String
+  addressLine1          String
+  addressLine2          String?
+  city                  String
+  state                 String
+  zip                   String
+  country               String
+  default               Boolean        @default(false)
+  isBilling             Boolean        @default(false)
+  organizationAddress   Organization[] @relation("organizationAddress")
+  organization          Organization[] @relation("organizationBillingAddress")
+  patientAddress        Patient[]      @relation("patientAddress")
+  patientBillingAddress Patient[]      @relation("patientBillingAddress")
+  kitOrder              KitOrder[]     @relation("kitOrderShippingAddress")
+  order                 Order[]        @relation("orderShippingAddress")
+  deleted               Boolean        @default(false)
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+
+  @@index([label])
+  @@index([default])
+}
+
+model KitOrder {
+  id               String                 @id @default(cuid())
+  status           KitOrderStatus         @default(ORDERED)
+  shippingStatus   KitOrderShippingStatus @default(LABEL_GENERATED)
+  quantity         Int
+  subtotal         Float
+  total            Float
+  priceAdjustments PriceAdjustment[]
+  organizationId   String
+  organization     Organization           @relation(fields: [organizationId], references: [id])
+  shipToId         String
+  shipTo           Address                @relation("kitOrderShippingAddress", fields: [shipToId], references: [id])
+  invoice          Invoice?
+  deleted          Boolean                @default(false)
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  @@index([status])
+  @@index([quantity])
+  @@index([subtotal])
+  @@index([total])
+}
+
+model Invoice {
+  id            String        @id @default(cuid())
+  invoiceNumber String?       @unique
+  status        InvoiceStatus @default(AWAITING_BILLING)
+  amount        Float
+  stripeUrl     String?
+  paymentLink   String?
+  kitOrderId    String?       @unique
+  kitOrder      KitOrder?     @relation(fields: [kitOrderId], references: [id])
+  deleted       Boolean       @default(false)
+  dueAt         DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  order         Order[]
+
+  @@index([invoiceNumber])
+  @@index([status])
+  @@index([amount])
+  @@index([deleted])
+}
+
+model Project {
+  id                    String                  @id @default(cuid())
+  name                  String
+  description           String?
+  leadName              String
+  active                Boolean                 @default(true)
+  serviceRequests       ServiceRequest[]
+  files                 S3File[]
+  organizationId        String
+  organization          Organization            @relation(fields: [organizationId], references: [id])
+  projectServicePricing ProjectServicePricing[]
+  notes                 Note[]
+  deleted               Boolean                 @default(false)
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt
+
+  @@index([name])
+  @@index([organizationId])
+  @@index([leadName])
+  @@index([deleted])
+}
+
+model Order {
+  id               String                @id @default(cuid())
+  orderId          String                @unique
+  labOrderId       String?
+  status           String                @default("DRAFT")
+  submittedToLab   Boolean               @default(false)
+  invoiceId        String?
+  invoice          Invoice?              @relation(fields: [invoiceId], references: [id])
+  organizationId   String
+  organization     Organization          @relation(fields: [organizationId], references: [id])
+  reqFormStatus    RequisitionFormStatus @default(PENDING_APPROVAL)
+  reqFormS3Key     String?               @unique
+  reqForm          S3File?               @relation(fields: [reqFormS3Key], references: [s3Key])
+  shipToId         String?
+  shipTo           Address?              @relation("orderShippingAddress", fields: [shipToId], references: [id])
+  price            Float?
+  priceAdjustments PriceAdjustment[]
+  total            Float?
+  serviceRequests  ServiceRequest[]
+  notes            Note[]
+  deleted          Boolean               @default(false)
+  updatedAt        DateTime              @updatedAt
+  createdAt        DateTime              @default(now())
+
+  @@index([organizationId])
+  @@index([orderId])
+  @@index([labOrderId])
+  @@index([status])
+  @@index([submittedToLab])
+  @@index([reqFormStatus])
+  @@index([price])
+  @@index([total])
+  @@index([deleted])
+}
+
+model ServiceRequest {
+  id             String      @id @default(cuid())
+  serviceTypeId  String
+  serviceType    ServiceType @relation(fields: [serviceTypeId], references: [id])
+  price          Float?
+  patientId      String?
+  patient        Patient?    @relation(fields: [patientId], references: [id])
+  practitionerId String?
+  practitioner   Employee?   @relation(fields: [practitionerId], references: [id])
+  specimen       Specimen[]
+  orderId        String?
+  order          Order?      @relation(fields: [orderId], references: [id])
+  projectId      String?
+  project        Project?    @relation(fields: [projectId], references: [id])
+  s3FileId       String?
+  s3File         S3File?     @relation(fields: [s3FileId], references: [id])
+  questionnaire  Json?
+  notes          Note[]
+  deleted        Boolean     @default(false)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([price])
+  @@index([patientId])
+  @@index([practitionerId])
+  @@index([projectId])
+  @@index([serviceTypeId])
+  @@index([s3FileId])
+  @@index([orderId])
+  @@index([deleted])
+}
+
+model ProjectServicePricing {
+  id               String            @id @default(cuid())
+  projectId        String
+  project          Project           @relation(fields: [projectId], references: [id])
+  serviceTypeId    String
+  serviceType      ServiceType       @relation(fields: [serviceTypeId], references: [id])
+  priceAdjustments PriceAdjustment[]
+  finalPrice       Float
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([finalPrice])
+  @@index([projectId])
+  @@index([serviceTypeId])
+  @@index([projectId, serviceTypeId])
+}
+
+model ServiceType {
+  id                    String                  @id @default(cuid())
+  name                  String
+  description           String
+  price                 Float
+  current               Boolean                 @default(true)
+  labTestId             String                  @unique //wbl test versionId
+  projectServicePricing ProjectServicePricing[]
+  image                 String?
+  questionnaireIds      String[]
+  serviceRequest        ServiceRequest[]
+  deleted               Boolean                 @default(false)
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt
+
+  @@index([name])
+  @@index([price])
+  @@index([current])
+  @@index([labTestId])
+  @@index([deleted])
+}
+
+model Specimen {
+  id               String         @id @default(cuid())
+  kitId            String         @unique
+  status           String         @default("DRAFT")
+  tissueType       TissueType?
+  volume           Float?
+  resultS3Key      String?
+  result           S3File?        @relation(fields: [resultS3Key], references: [s3Key])
+  serviceRequestId String         @unique
+  serviceRequest   ServiceRequest @relation(fields: [serviceRequestId], references: [id])
+  deleted          Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index(fields: [kitId])
+  @@index(fields: [status])
+  @@index(fields: [tissueType])
+  @@index([deleted])
+}
+
+model PriceAdjustment {
+  id                      String                 @id @default(cuid())
+  type                    ChargeType
+  description             String?
+  amount                  Float
+  orderId                 String?
+  order                   Order?                 @relation(fields: [orderId], references: [id])
+  kitOrderId              String?
+  kitOrder                KitOrder?              @relation(fields: [kitOrderId], references: [id])
+  projectServicePricingId String?
+  projectServicePricing   ProjectServicePricing? @relation(fields: [projectServicePricingId], references: [id])
+  createdAt               DateTime               @default(now())
+  updatedAt               DateTime               @updatedAt
+
+  @@index([type])
+  @@index([amount])
+}
+
+model S3File {
+  id             String           @id @default(cuid())
+  fileName       String
+  s3Key          String           @unique
+  practitionerId String?
+  practitioner   Employee?        @relation(fields: [practitionerId], references: [id])
+  specimen       Specimen[]
+  serviceRequest ServiceRequest[]
+  projectId      String?
+  project        Project?         @relation(fields: [projectId], references: [id])
+  orderId        String?
+  orders         Order?
+  createdAt      DateTime         @default(now())
+
+  @@index([fileName])
+  @@index([s3Key])
+}
+
+model Note {
+  id               String          @id @default(cuid())
+  title            String?
+  body             String
+  orderId          String?
+  order            Order?          @relation(fields: [orderId], references: [id])
+  serviceRequestId String?
+  serviceRequest   ServiceRequest? @relation(fields: [serviceRequestId], references: [id])
+  projectId        String?
+  project          Project?        @relation(fields: [projectId], references: [id])
+  createdAt        DateTime        @default(now())
+}
+
+model Event {
+  id                  String    @id @default(cuid())
+  type                EventType
+  event               String
+  createdAt           DateTime  @default(now())
+  licenseId           String?
+  licenseVerification License?  @relation("licenseVerification")
+  licenseExpirationId String?
+  licenseExpiration   License?  @relation("licenseExpiration")
+}
+
+model AuditLog {
+  id              String   @id @default(cuid())
+  model           String
+  operation       String
+  userId          String?
+  retoolUserEmail String?
+  originalEvent   Json?
+  eventChanges    Json
+  duration        Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+enum OrganizationType {
+  RESEARCH
+  CLINICAL
+}
+
+enum Role {
+  BILLING_MANAGER
+  PRACTITIONER
+  STAFF
+
+  ADMIN
+  RESEARCHER
+  DATA_ANALYST
+  PROJECT_MANAGER
+}
+
+enum PracticeType {
+  MEDICAL_DOCTOR
+  DOCTOR_OF_OSTEOPATHIC_MEDICINE
+  NATUROPATHIC_DOCTOR
+  DOCTOR_OF_CHIROPRACTIC
+  LICENSED_ACUPUNCTURIST
+  DOCTOR_OF_ACUPUNCTURE_AND_ORIENTAL_MEDICINE
+  ADVANCED_PRACTICE_REGISTERED_NURSE
+  CLINICAL_NURSE_SPECIALIST
+  NURSE_PRACTITIONER
+  PHYSICIAN_ASSISTANT
+  REGISTERED_NURSE
+  PHARMACIST
+  DIETITIAN
+  DOCTOR_OF_PODIATRIC_MEDICINE
+  DOCTOR_OF_PHILOSOPHY
+  NUTRITIONIST
+  HEALTH_COACH
+  DENTIST
+  OPTOMETRIST
+  OTHER
+}
+
+enum ProcessStatus {
+  DRAFT
+  ASSIGNED
+  PROCESSING
+  COMPLETED
+  CANCELED
+  PENDING_APPROVAL
+}
+
+enum RequisitionFormStatus {
+  PENDING_APPROVAL
+  DENIED
+  APPROVED
+}
+
+enum KitOrderStatus {
+  DRAFT
+  ORDERED
+  COMPLETED
+  CANCELED
+}
+
+enum KitOrderShippingStatus {
+  LABEL_GENERATED
+  SHIPPED
+  RECEIVED
+  IN_TRANSIT
+  DELIVERED
+  CANCELED
+}
+
+enum InvoiceStatus {
+  PAYMENT_FAILED
+  CANCELED
+  VOID
+  AWAITING_BILLING
+  BILLED
+  PARTIALLY_FAILED
+  PARTIALLY_PAID
+  PAID_IN_FULL
+}
+
+enum LicenseStatus {
+  ACTIVE
+  PENDING_APPROVAL
+  REJECTED
+  EXPIRED
+}
+
+enum ChargeType {
+  DISCOUNT
+  TAX
+  SHIPPING
+  HANDLING
+  SERVICE
+}
+
+enum TissueType {
+  WHOLE_BLOOD
+  PLASMA
+}
+
+enum SexType {
+  MALE
+  FEMALE
+}
+
+enum EventType {
+  EMAIL_SENT
+  LICENSE_APPROVED
+  LICENSE_DENIED
+  LICENSE_EXPIRED
+}
