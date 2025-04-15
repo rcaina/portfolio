@@ -1,4 +1,4 @@
-# Resonant
+# Portal
 
 ## Getting Started
 
