@@ -20,7 +20,7 @@ const ServiceTypeDisplay: React.FC<Props> = ({ serviceType, className }) => {
           <Image
             priority
             src={logo}
-            alt="Resonant Logo"
+            alt="logo"
             placeholder="blur"
             width={95}
             height={36}

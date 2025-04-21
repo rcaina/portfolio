@@ -47,46 +47,10 @@ const createPractitioners = async () => {
 
   const internalUsers: internalUser[] = [
     {
-      email: "renzo@renewbt.com",
+      email: "renzocainaedge@gmail.com",
       firstName: "Renzo",
       lastName: "Caina",
       stripeId: "cus_Rz7lKzBsgTI1uU",
-    },
-    {
-      email: "dillon@resonantdx.com",
-      firstName: "Dillon",
-      lastName: "Craw",
-      stripeId: "cus_RzBywvnLObipuQ",
-    },
-    {
-      email: "jared@renewbt.com",
-      firstName: "Jared",
-      lastName: "Renbar",
-      stripeId: "cus_Rz7h44TFfinvWi",
-    },
-    {
-      email: "brianna@renewbt.com",
-      firstName: "Brianna",
-      lastName: "Vance",
-      stripeId: "cus_Rz7hz6zzyeAZqQ",
-    },
-    {
-      email: "bruce@renewbt.com",
-      firstName: "Bruce",
-      lastName: "Hassler",
-      stripeId: "cus_Rz7eLvWSWgJkNI",
-    },
-    {
-      email: "john@renewbt.com",
-      firstName: "John",
-      lastName: "Doe",
-      stripeId: "cus_Rz7bYfiQlGbHfe",
-    },
-    {
-      email: "jane@renewbt.com",
-      firstName: "Jane",
-      lastName: "Doe",
-      stripeId: "cus_RyMhMJs4kRAYmb",
     },
   ];
 

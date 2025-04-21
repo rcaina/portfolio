@@ -12,7 +12,7 @@ export const SignInEmailTemplate = ({ url, verified }: Props) => {
 
   return `
      <div style="background-color: #3A397E; padding: 80px; border-radius: 5px;">
-        <img src="http://dev.resonantdx.com/_next/image?url=%2Fwordmark.png&w=256&q=75" alt="Logo" style="display: block; margin: 0 auto; width: 300px; height: 125px; padding-bottom: 50px;">
+        <img src="" alt="Logo" style="display: block; margin: 0 auto; width: 300px; height: 125px; padding-bottom: 50px;">
         <div style="background-color: #f2f2f2; padding: 70px; border-radius: 5px;">
             <div style="padding-bottom: 30px; border-bottom: 1px solid #F3F4F6;">
                 <div style="padding: 0 40px; text-align: center;">
@@ -28,9 +28,6 @@ export const SignInEmailTemplate = ({ url, verified }: Props) => {
                 </p>
             </div>
             <div style="text-align: center; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: #11353f;">
-                <p>
-                    If you have any questions, please contact support@resonantdx.com
-                </p>
             </div>
         </div>
         <span style="opacity: 0">${randomness} </span>

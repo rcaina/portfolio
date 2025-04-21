@@ -65,7 +65,7 @@ export default function Footer() {
         <p>
           © 2024&nbsp;
           <Link href="/" className="font-medium text-primary-500">
-            Resonant
+            Renzo Caina
           </Link>
           . All rights reserved.
         </p>

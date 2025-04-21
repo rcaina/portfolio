@@ -16,7 +16,7 @@ export default function AuthHeader() {
                 <Image
                   priority
                   src={logo}
-                  alt="Resonant Logo"
+                  alt="logo"
                   width={160}
                   height={160}
                 />

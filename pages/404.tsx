@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Error404Page() {
   <Head>
-    <title>404 Page Not Found - Resonant</title>
+    <title>404 Page Not Found - Portfolio</title>
     <meta name="robots" content="noindex,nofollow" />
   </Head>;
   return (

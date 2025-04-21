@@ -1,13 +1,9 @@
-import { OrganizationType, Role } from "@prisma/client";
-
 import ArrowLeftIcon from "@heroicons/react/20/solid/ArrowLeftIcon";
 import Container from "@/components/layout/Container";
-import { GetAccountResponse } from "@/pages/api/current/account/[id]";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { cx } from "@/lib/utils";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 import { useSession } from "next-auth/react";
 
 interface Props {
@@ -35,25 +31,6 @@ export default function PageHeader({
 }: Props) {
   const router = useRouter();
   const { data: session } = useSession();
-  const { data: currentAccount } = useSWR<GetAccountResponse>(
-    session?.user.currentAccountId
-      ? `/api/current/account/${session?.user.currentAccountId}`
-      : null,
-    {
-      shouldRetryOnError: false,
-      revalidateOnFocus: false,
-    }
-  );
-
-  const { data: isLocked = true } = useSWR<boolean>(
-    currentAccount?.role === Role.RESEARCHER
-      ? `/api/current/license-status`
-      : null,
-    {
-      shouldRetryOnError: false,
-      revalidateOnFocus: false,
-    }
-  );
 
   const Inner = () => (
     <div>
@@ -102,8 +79,7 @@ export default function PageHeader({
           <Inner />
         )}
       </div>
-      {isLocked &&
-        currentAccount?.organization?.type === OrganizationType.CLINICAL &&
+      {session &&
         title &&
         !subHeadingTitles.includes(title.toString().toLocaleLowerCase()) &&
         showLock && (

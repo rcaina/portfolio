@@ -9,7 +9,7 @@ export default function AuthFooter() {
         <p>
           © 2024&nbsp;
           <Link href="/" className="font-medium text-secondary-600">
-            Resonant
+            Renzo Caina
           </Link>
           . All rights reserved.
         </p>

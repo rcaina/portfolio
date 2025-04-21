@@ -2,14 +2,9 @@ import { Fragment, useEffect } from "react";
 import { Popover, Transition } from "@headlessui/react";
 
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { KitOrderStatus } from "@prisma/client";
-import KitOrderStatusBadge from "@/components/misc/badges/KitOrderStatusBadge";
 import { NextRouter } from "next/router";
 import { ensureArray } from "@/lib/utils";
 
-const kitOrderStatusStrings = Object.values(KitOrderStatus).filter(
-  (value) => typeof value === "string"
-) as string[];
 interface Props {
   name: string;
   options: { label: string; value: string }[] | string[];
@@ -140,20 +135,12 @@ export default function Filter({
                     type="checkbox"
                     className="rounded-sm border-secondary-600 text-highlight-600 focus:ring-highlight-500"
                   />
-                  {kitOrderStatusStrings.includes(option.label) ? (
-                    <div className="ml-3 whitespace-nowrap pr-6">
-                      <KitOrderStatusBadge
-                        status={option.label as KitOrderStatus}
-                      />
-                    </div>
-                  ) : (
-                    <label
-                      htmlFor={`filter-${name}-${option.value}`}
-                      className="ml-3 whitespace-nowrap pr-6 text-sm font-medium dark:text-white"
-                    >
-                      {option.label}
-                    </label>
-                  )}
+                  <label
+                    htmlFor={`filter-${name}-${option.value}`}
+                    className="ml-3 whitespace-nowrap pr-6 text-sm font-medium dark:text-white"
+                  >
+                    {option.label}
+                  </label>
                 </div>
               );
             })}

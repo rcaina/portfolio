@@ -12,17 +12,17 @@ services:
       - "MINIO_ROOT_PASSWORD=password"
     command: server /export --console-address :9001
   db:
-    container_name: portal
+    container_name: portfolio
     image: postgres:17.4
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: portal
+      POSTGRES_DB: portfolio
     ports:
       - 5433:5432
     volumes:
-      - pgdata:/var/lib/postgresql/15/data
+      - pgdata:/var/lib/postgresql/17/data
 
 volumes:
   pgdata:

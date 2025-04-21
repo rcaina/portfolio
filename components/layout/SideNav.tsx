@@ -403,13 +403,7 @@ export const SideNav = () => {
       >
         <div className="ml-3 flex items-center justify-center">
           <Link href="/">
-            <Image
-              priority
-              src={logo}
-              alt="Resonant Logo"
-              width={190}
-              height={190}
-            />
+            <Image priority src={logo} alt="logo" width={190} height={190} />
           </Link>
         </div>
       </div>

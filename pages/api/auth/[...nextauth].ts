@@ -71,7 +71,7 @@ export const authOptions: NextAuthOptions = {
           await transport.sendMail({
             from,
             to: email,
-            subject: "Resonant sign in",
+            subject: "Portfolio sign in",
             html: SignInEmailTemplate({
               url: url,
               verified: inDB.emailVerified ? true : false,

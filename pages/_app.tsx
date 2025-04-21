@@ -21,7 +21,7 @@ export default function App({
   return (
     <>
       <Head>
-        <title>Resonant</title>
+        <title>Portfolio</title>
         <link rel="manifest" href="/manifest.json" />
         <link
           href="/icons/favicon-16x16.png"

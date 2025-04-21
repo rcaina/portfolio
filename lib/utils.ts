@@ -15,7 +15,6 @@ import { formatInTimeZone, toDate } from "date-fns-tz";
 
 import JSZip from "jszip";
 import { NextApiResponse } from "next";
-import { PresignedResponse } from "@/pages/api/s3/presigned";
 import classnames from "classnames";
 import dayOfYear from "dayjs/plugin/dayOfYear";
 import dayjs from "dayjs";
@@ -153,33 +152,33 @@ export const generateJulianId = (prevJulianId?: string | null): string => {
   return `${year}-${julianDate}-${sequentialNumber}`;
 };
 
-export const upload: (
-  file: File,
-  bucket: S3Bucket
-) => Promise<PresignedResponse> = async (file, bucket) => {
-  const filename = encodeURIComponent(file.name);
-  const getPresignedResponse = await fetch(
-    `/api/s3/presigned?file=${filename}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({ title: filename, type: file.type, bucket }),
-    }
-  );
-  const responseData: PresignedResponse = await getPresignedResponse.json();
-  const url = responseData.url;
-  const uploadResponse = await fetch(url, {
-    method: "PUT",
-    body: file,
-  });
-  if (!uploadResponse.ok) {
-    throw new Error("Error uploading file");
-  }
-  return responseData;
-};
+// export const upload: (
+//   file: File,
+//   bucket: S3Bucket
+// ) => Promise<PresignedResponse> = async (file, bucket) => {
+//   const filename = encodeURIComponent(file.name);
+//   const getPresignedResponse = await fetch(
+//     `/api/s3/presigned?file=${filename}`,
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Access-Control-Allow-Origin": "*",
+//       },
+//       body: JSON.stringify({ title: filename, type: file.type, bucket }),
+//     }
+//   );
+//   const responseData: PresignedResponse = await getPresignedResponse.json();
+//   const url = responseData.url;
+//   const uploadResponse = await fetch(url, {
+//     method: "PUT",
+//     body: file,
+//   });
+//   if (!uploadResponse.ok) {
+//     throw new Error("Error uploading file");
+//   }
+//   return responseData;
+// };
 
 export const addSevenHours = (timestamp: Date | string): Date => {
   const inputDate = timestamp instanceof Date ? timestamp : new Date(timestamp);

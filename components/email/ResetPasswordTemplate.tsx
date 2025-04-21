@@ -10,7 +10,7 @@ export const ResetPasswordTemplate = ({ url, name }: Props) => {
   const userName = capitalizeNames(name) || "customer";
   return `
     <div style="background-color: #3A397E; padding: 80px; border-radius: 5px;">
-        <img src="http://dev.resonantdx.com/_next/image?url=%2Fwordmark.png&w=256&q=75" alt="Logo" style="display: block; margin: 0 auto; width: 300px; height: 125px; padding-bottom: 50px;">
+        <img src="" alt="Logo" style="display: block; margin: 0 auto; width: 300px; height: 125px; padding-bottom: 50px;">
         <div style="background-color: #f2f2f2; padding: 70px; border-radius: 5px;">
       <div style="background-color: #f2f2ed; padding: 70px; border-radius: 5px;">
         <h2 style="text-align: left; font-family: Inter, sans-serif; font-weight: 500; font-size: 20px; color: #3A397E;">Dear ${userName},</h2>
@@ -28,9 +28,6 @@ export const ResetPasswordTemplate = ({ url, name }: Props) => {
             </p>
         </div>
         <div style="text-align: center; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: #3A397E;">
-            <p>
-            If you have any questions, please contact support@resonantdx.com
-            </p>
         </div>
     
       </div>
