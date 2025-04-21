@@ -1,0 +1,28 @@
+{
+  "API Handler Template": {
+    "prefix": "apihandler", // the trigger word
+    "body": [
+      "import { NextApiRequest, NextApiResponse } from 'next';",
+      "",
+      "const handler = async (req: NextApiRequest, res: NextApiResponse) => {",
+      "  try {",
+      "    switch (req.method) {",
+      "      case 'GET':",
+      "        // handle GET",
+      "        return res.status(200).json({ message: 'GET successful' });",
+      "      case 'POST':",
+      "        // handle POST",
+      "        return res.status(201).json({ message: 'POST successful' });",
+      "      default:",
+      "        return res.status(405).json({ message: 'Method Not Allowed' });",
+      "    }",
+      "  } catch (error) {",
+      "    console.error(error);",
+      "    return res.status(500).json({ message: 'Internal Server Error' });",
+      "  }",
+      "}",
+      "export default handler;"
+    ],
+    "description": "Basic API route handler for Next.js"
+  }
+}
