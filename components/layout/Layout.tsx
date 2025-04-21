@@ -14,14 +14,7 @@ export default function Layout({ children }: Props) {
 
   const hideSideBar =
     router.pathname === "/sign-in" ||
-    router.pathname === "/research/sign-up" ||
     router.pathname === "/sign-up" ||
-    router.pathname === `/patient-sign-up` ||
-    router.pathname === `/clinic-sign-up` ||
-    router.pathname === `/register-verify-information` ||
-    router.pathname === `/register-credentials` ||
-    router.pathname === `/verify-details` ||
-    router.pathname === `/billing-info` ||
     router.pathname === `/reset/password` ||
     router.pathname === `/reset/[token]` ||
     router.pathname === `/reset/email-success`;

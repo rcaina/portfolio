@@ -1,10 +1,8 @@
 import { GetServerSideProps } from "next";
-import { Role } from "@prisma/client";
 import SignUpForm from "@/components/forms/auth/SignUpForm";
 import { SubmitHandler } from "react-hook-form";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
-import { isEmpty } from "lodash-es";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
@@ -15,8 +13,6 @@ export type SignUpFormInputs = {
   confirmPassword: string;
   firstName: string;
   lastName: string;
-  role: Role;
-  organization: string;
 };
 
 interface Props {
@@ -34,9 +30,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   if (session?.user.id) {
     return {
       redirect: {
-        destination: !isEmpty(redirect_url)
-          ? `/clinic-sign-up?redirect_url=${redirect_url}`
-          : "/clinic-sign-up",
+        destination: "/",
         permanent: false,
       },
     };
@@ -79,7 +73,7 @@ export default function SignUpPage({ redirect }: Props) {
           }).then((res) => {
             if (res?.ok) {
               toast.success("Logged in successfully");
-              router.push("/clinic-sign-up");
+              router.push("/");
             } else {
               toast.error(res?.error || "Failed to log in");
             }

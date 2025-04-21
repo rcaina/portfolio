@@ -1,15 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import {
-  KitOrderShippingStatus,
-  KitOrderStatus,
-  LicenseStatus,
-  OrganizationType,
-  PracticeType,
-  Prisma,
-  RequisitionFormStatus,
-  Role,
-  SexType,
-} from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ZodError, z } from "zod";
 import { formatInTimeZone, toDate } from "date-fns-tz";
 
@@ -31,11 +21,6 @@ export const KIT_ORDER_SHIPPING_CHARGE = 50;
 export const MST_TIMEZONE = "America/Denver";
 
 dayjs.extend(dayOfYear);
-
-export const sexTypeOptions = [
-  { label: "Male", value: SexType.MALE },
-  { label: "Female", value: SexType.FEMALE },
-];
 
 export function cx(...args: classnames.ArgumentArray) {
   return twMerge(classnames(args));
@@ -397,65 +382,6 @@ export async function getS3Docs(
   return false;
 }
 
-export const organizationRolesFilterOptions = [
-  {
-    label: "Practitioner",
-    value: Role.PRACTITIONER,
-  },
-  {
-    label: "Staff",
-    value: Role.STAFF,
-  },
-  {
-    label: "Billing Administrator",
-    value: Role.BILLING_MANAGER,
-  },
-];
-
-export const researchRolesFilterOptions = [
-  {
-    label: "Admin",
-    value: Role.ADMIN,
-  },
-  {
-    label: "Researcher",
-    value: Role.RESEARCHER,
-  },
-  {
-    label: "Data Analyst",
-    value: Role.DATA_ANALYST,
-  },
-  {
-    label: "Billing Administrator",
-    value: Role.BILLING_MANAGER,
-  },
-];
-
-export const organizationAllowedRoles: Role[] = [Role.PRACTITIONER, Role.STAFF];
-export const PractitionerTypes = [
-  "Select practitioner type",
-  "MD - Medical Doctor",
-  "DO - Doctor of Osteopathic Medicine",
-  "ND - Naturopathic Doctor",
-  "DC - Doctor of Chiropractic",
-  "L.Ac - Licensed Acupuncturist",
-  "DAOM/OMD - Doctor of Acupuncture and Oriental Medicine",
-  "APRN - Advanced Practice Registered Nurse",
-  "CNS - Clinical Nurse Specialist",
-  "NP - Nurse Practitioner",
-  "PA - Physician Assistant",
-  "RN - Registered Nurse",
-  "Pharmacist",
-  "Dietitian",
-  "DPM - Doctor of Podiatric Medicine",
-  "PhD - Doctor of Philosophy",
-  "Nutritionist",
-  "Health Coach",
-  "Dentist",
-  "Optometrist",
-  "Other",
-];
-
 export const mapAdminStatusToCustomerStatus = (status: string) => {
   switch (status) {
     case "DRAFT":
@@ -465,68 +391,6 @@ export const mapAdminStatusToCustomerStatus = (status: string) => {
     default:
       return "IN_PROGRESS";
   }
-};
-
-export const mapPracticeTypeToText: Record<PracticeType, string> = {
-  [PracticeType.MEDICAL_DOCTOR]: "Medical Doctor",
-  [PracticeType.DOCTOR_OF_OSTEOPATHIC_MEDICINE]:
-    "Doctor of Osteopathic Medicine",
-  [PracticeType.NATUROPATHIC_DOCTOR]: "Naturopathic Doctor",
-  [PracticeType.DOCTOR_OF_CHIROPRACTIC]: "Doctor of Chiropractic",
-  [PracticeType.LICENSED_ACUPUNCTURIST]: "Licensed Acupuncturist",
-  [PracticeType.DOCTOR_OF_ACUPUNCTURE_AND_ORIENTAL_MEDICINE]:
-    "Doctor of Acupuncture and Oriental Medicine",
-  [PracticeType.ADVANCED_PRACTICE_REGISTERED_NURSE]:
-    "Advanced Practice Registered Nurse",
-  [PracticeType.CLINICAL_NURSE_SPECIALIST]: "Clinical Nurse Specialist",
-  [PracticeType.NURSE_PRACTITIONER]: "Nurse Practitioner",
-  [PracticeType.PHYSICIAN_ASSISTANT]: "Physician Assistant",
-  [PracticeType.REGISTERED_NURSE]: "Registered Nurse",
-  [PracticeType.PHARMACIST]: "Pharmacist",
-  [PracticeType.DIETITIAN]: "Dietitian",
-  [PracticeType.DOCTOR_OF_PODIATRIC_MEDICINE]: "Doctor of Podiatric Medicine",
-  [PracticeType.DOCTOR_OF_PHILOSOPHY]: "Doctor of Philosophy",
-  [PracticeType.NUTRITIONIST]: "Nutritionist",
-  [PracticeType.HEALTH_COACH]: "Health Coach",
-  [PracticeType.DENTIST]: "Dentist",
-  [PracticeType.OPTOMETRIST]: "Optometrist",
-  [PracticeType.OTHER]: "Other",
-};
-
-export const mapStatusToText: Record<
-  | OrganizationType
-  | KitOrderStatus
-  | KitOrderShippingStatus
-  | LicenseStatus
-  | RequisitionFormStatus
-  | Role,
-  string
-> = {
-  [OrganizationType.CLINICAL]: "Clinical",
-  [OrganizationType.RESEARCH]: "Research",
-  [KitOrderStatus.ORDERED]: "Ordered",
-  [KitOrderShippingStatus.SHIPPED]: "Shipped",
-  [KitOrderStatus.COMPLETED]: "Completed",
-  [KitOrderStatus.DRAFT]: "Draft",
-  [KitOrderShippingStatus.RECEIVED]: "Received",
-  [LicenseStatus.PENDING_APPROVAL || RequisitionFormStatus.PENDING_APPROVAL]:
-    "Pending Approval",
-  [KitOrderShippingStatus.CANCELED]: "Canceled",
-  [Role.PRACTITIONER]: "Practitioner",
-  [Role.STAFF]: "Staff",
-  [Role.BILLING_MANAGER]: "Billing Manager",
-  [Role.ADMIN]: "Admin",
-  [Role.RESEARCHER]: "Researcher",
-  [Role.DATA_ANALYST]: "Data Analyst",
-  [Role.PROJECT_MANAGER]: "Project Manager",
-  [LicenseStatus.ACTIVE]: "Active",
-  [LicenseStatus.REJECTED]: "Rejected",
-  [LicenseStatus.EXPIRED]: "Expired",
-  [KitOrderShippingStatus.LABEL_GENERATED]: "Label Generated",
-  [KitOrderShippingStatus.IN_TRANSIT]: "In Transit",
-  [KitOrderShippingStatus.DELIVERED]: "Delivered",
-  [RequisitionFormStatus.APPROVED]: "Approved",
-  [RequisitionFormStatus.DENIED]: "Rejected",
 };
 
 export const StatesInAmerica = [

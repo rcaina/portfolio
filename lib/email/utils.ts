@@ -1,14 +1,10 @@
-import { EventType } from "@prisma/client";
 import nodemailer from "nodemailer";
-import prisma from "@/lib/prisma";
 
 export async function sendEmail({
   toEmail,
   subject,
   html,
   attachments,
-  userId,
-  retoolUserEmail,
 }: {
   toEmail: string;
   subject: string;
@@ -19,7 +15,6 @@ export async function sendEmail({
   retoolUserEmail?: string;
 }) {
   try {
-    const start = performance.now();
     const transporter = nodemailer.createTransport({
       service: "SES-US-WEST-2",
       auth: {
@@ -37,17 +32,6 @@ export async function sendEmail({
     });
 
     transporter.close();
-    const end = performance.now();
-    await prisma.auditLog.create({
-      data: {
-        model: "Email",
-        operation: "CREATE",
-        userId,
-        retoolUserEmail,
-        eventChanges: `${EventType.EMAIL_SENT}: Email sent to ${toEmail} with subject ${subject}`,
-        duration: end - start,
-      },
-    });
   } catch (error) {
     console.error("Failed to send email to", toEmail, error);
   }

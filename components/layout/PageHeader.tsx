@@ -1,10 +1,8 @@
 import ArrowLeftIcon from "@heroicons/react/20/solid/ArrowLeftIcon";
 import Container from "@/components/layout/Container";
-import Link from "next/link";
 import { ReactNode } from "react";
 import { cx } from "@/lib/utils";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
 
 interface Props {
   backButtonText?: string;
@@ -17,8 +15,6 @@ interface Props {
   showLock?: boolean;
 }
 
-const subHeadingTitles = ["settings, billing"];
-
 export default function PageHeader({
   backButtonText,
   backButtonHref,
@@ -27,10 +23,8 @@ export default function PageHeader({
   inContainer = false,
   withOutlines = true,
   RightElement,
-  showLock = true,
 }: Props) {
   const router = useRouter();
-  const { data: session } = useSession();
 
   const Inner = () => (
     <div>
@@ -79,24 +73,6 @@ export default function PageHeader({
           <Inner />
         )}
       </div>
-      {session &&
-        title &&
-        !subHeadingTitles.includes(title.toString().toLocaleLowerCase()) &&
-        showLock && (
-          <div className="m-2 rounded bg-red-200 p-2 text-xs">
-            <p className="text-center text-red-600">
-              {`Your account has been locked due to the absence of practitioners
-              with approved credentials. This may be due to expired or missing
-              licenses. Please update your licenses to restore access. `}
-              <Link
-                href="/settings/organization/team"
-                className="text-red-500 underline"
-              >
-                Update Licenses
-              </Link>
-            </p>
-          </div>
-        )}
     </>
   );
 }

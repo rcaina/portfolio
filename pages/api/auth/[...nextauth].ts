@@ -58,7 +58,7 @@ export const authOptions: NextAuthOptions = {
         url,
         provider: { server, from },
       }) {
-        const inDB = await prisma.employee.findFirst({
+        const inDB = await prisma.account.findFirst({
           where: {
             email: email.toLowerCase(),
             deleted: false,
@@ -90,7 +90,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (credentials?.password && credentials?.email) {
-          const employee = await prisma.employee.findFirst({
+          const account = await prisma.account.findFirst({
             where: {
               email: credentials?.email.toLowerCase(),
             },
@@ -99,45 +99,26 @@ export const authOptions: NextAuthOptions = {
               email: true,
               emailVerified: true,
               password: true,
-              fullName: true,
-              accounts: {
-                select: {
-                  id: true,
-                  role: true,
-                  organization: {
-                    select: {
-                      id: true,
-                      name: true,
-                      type: true,
-                    },
-                  },
-                },
-                take: 1,
-              },
-              image: true,
+              firstname: true,
+              lastName: true,
               deleted: true,
             },
           });
 
-          if (employee?.password) {
+          if (account?.password) {
             const isMatch = await bcrypt.compare(
               credentials?.password,
-              employee.password
+              account.password
             );
 
             if (isMatch) {
               const cleanUser = {
-                id: employee.id,
-                email: employee.email,
-                name: employee.fullName,
-                image: employee?.image || null,
-                emailVerified: employee?.emailVerified || null,
-                role: employee.accounts[0].role,
-                currentAccountId: employee.accounts[0].id,
-                accountType: employee.accounts[0].organization.type,
-                organizationId: employee.accounts[0].organization.id,
-                organization: employee.accounts[0].organization.name,
-                deleted: employee.deleted,
+                id: account.id,
+                email: account.email,
+                firstname: account.firstname,
+                lastname: account.lastName,
+                emailVerified: account?.emailVerified || null,
+                deleted: account.deleted,
               };
 
               return cleanUser;
@@ -159,31 +140,17 @@ export const authOptions: NextAuthOptions = {
       let foundUser;
 
       if (token) {
-        foundUser = await prisma.employee.findUnique({
+        foundUser = await prisma.account.findUnique({
           where: {
             email: token.email as string,
           },
           select: {
             id: true,
-            fullName: true,
             email: true,
-            image: true,
+            firstname: true,
+            lastName: true,
             emailVerified: true,
             deleted: true,
-            accounts: {
-              select: {
-                id: true,
-                role: true,
-                organization: {
-                  select: {
-                    id: true,
-                    name: true,
-                    type: true,
-                  },
-                },
-              },
-              take: 1,
-            },
           },
         });
       }
@@ -192,75 +159,40 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: foundUser.id,
-          image: foundUser.image,
-          role: foundUser.accounts[0].role,
-          currentAccountId: foundUser.accounts[0].organization.id,
-          organizationId: foundUser.accounts[0].organization.id,
-          organization: foundUser.accounts[0].organization.name,
+          name: foundUser.firstname + " " + foundUser.lastName,
           emailVerified: foundUser.emailVerified,
           deleted: foundUser.deleted,
-          accountType: foundUser.accounts[0].organization.type,
         };
       }
 
-      const organization = token?.organizationId
-        ? await prisma.organization.findFirst({
-            where: {
-              id: token.organizationId,
-            },
-            select: {
-              name: true,
-            },
-          })
-        : undefined;
-
-      return { ...token, organization: organization?.name };
+      return { ...token };
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async session({ session, token }: any) {
       if (session?.user) {
         session.user.id = token.sub || session.user.id;
 
-        const employee = await prisma.employee.findFirst({
+        const employee = await prisma.account.findFirst({
           where: {
             id: session.user.id,
           },
           select: {
             id: true,
-            fullName: true,
+            firstname: true,
+            lastName: true,
             email: true,
-            image: true,
             emailVerified: true,
             deleted: true,
-            accounts: {
-              select: {
-                id: true,
-                role: true,
-                organization: {
-                  select: {
-                    id: true,
-                    name: true,
-                    type: true,
-                  },
-                },
-              },
-            },
           },
         });
 
         if (employee) {
           session.id = token.id;
-          session.name = token.name;
+          session.name = token.firstName + " " + token.lastName;
           session.email = token.email;
           session.user.id = employee.id;
-          session.user.role = employee.accounts[0].role;
-          session.user.organizationId = employee.accounts[0].organization.id;
-          session.user.currentAccountId = employee.accounts[0].id;
           session.user.emailVerified = employee.emailVerified;
           session.user.deleted = employee.deleted;
-          session.user.organization = employee.accounts[0].organization.name;
-          session.user.image = employee.image;
-          session.user.accountType = employee.accounts[0].organization.type;
         }
       }
 

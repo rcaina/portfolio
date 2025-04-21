@@ -1,4 +1,3 @@
-import { Role } from "@prisma/client";
 import { DefaultSession, DefaultUser } from "next-auth";
 
 declare module "next-auth" {
@@ -8,14 +7,8 @@ declare module "next-auth" {
    */
   interface User extends DefaultUser {
     id: string;
-    role: Role;
-    organizationId: string | null;
-    currentAccountId: string | null;
-    emailVerified: Date | null;
-    accountType: AccountType;
+    emailVerified: boolean | null;
     deleted: boolean;
-    organization: string | null;
-    image: string | null;
   }
 
   /**

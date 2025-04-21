@@ -31,7 +31,7 @@ export const createToken = async (
 
   const token = await prisma.passwordResetToken.create({
     data: {
-      employeeId: employeeId,
+      accountId: "",
       token: `${randomUUID()}${randomUUID()}`.replace(/-/g, ""),
       expiration: new Date(Date.now() + expirationTime),
     },
@@ -49,23 +49,23 @@ const handler = async (
   if (req.method === "POST") {
     const { email, isInsideRequest } = req.body;
 
-    const employeeExist = await prisma.employee.findUnique({
+    const account = await prisma.account.findUnique({
       where: {
         email: email,
       },
     });
 
-    if (!employeeExist) {
+    if (!account) {
       return res.status(400).json({ message: "This email is not registered" });
     }
 
-    const url = await createToken(employeeExist.id, "reset", isInsideRequest);
+    const url = await createToken(account.id, "reset", isInsideRequest);
 
     await sendEmail({
-      toEmail: employeeExist.email,
+      toEmail: account.email,
       subject: `Reset password request`,
       html: ResetPasswordTemplate({
-        name: employeeExist.fullName,
+        name: account.firstname + " " + account.lastName,
         url: url,
       }),
     });
@@ -88,9 +88,9 @@ const handler = async (
       return res.status(401).json({ message: "Token expired" });
     }
 
-    const employee = await prisma.employee.findUnique({
+    const employee = await prisma.account.findUnique({
       where: {
-        id: tokenExist.employeeId,
+        id: tokenExist.accountId,
       },
     });
 
@@ -107,19 +107,18 @@ const handler = async (
     let updatedUser = null;
 
     if (firstName && lastName) {
-      updatedUser = prisma.employee.update({
+      updatedUser = prisma.account.update({
         where: {
-          id: tokenExist.employeeId,
+          id: tokenExist.accountId,
         },
         data: {
-          fullName: firstName + " " + lastName,
           password: passwordHash,
         },
       });
     } else {
-      updatedUser = prisma.employee.update({
+      updatedUser = prisma.account.update({
         where: {
-          id: tokenExist.employeeId,
+          id: tokenExist.accountId,
         },
         data: {
           password: passwordHash,

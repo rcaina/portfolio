@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from "react";
 
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { cx } from "@/lib/utils";
-import logo from "@/public/images/logo-white.png";
+// import logo from "@/public/images/logo-white.png";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -48,7 +48,7 @@ export default function Header() {
       >
         <div className="ml-3 flex items-center justify-center">
           <Link href="/">
-            <Image priority src={logo} alt="logo" width={190} height={190} />
+            {/* <Image priority src={logo} alt="logo" width={190} height={190} /> */}
           </Link>
         </div>
       </div>
