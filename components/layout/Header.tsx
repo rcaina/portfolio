@@ -100,7 +100,7 @@ export default function Header() {
             </div>
 
             <Disclosure.Panel className="md:hidden">
-              <div className="space-y-1 pb-3 pt-2">
+              <div className="space-y-1 bg-background pb-3 pt-2">
                 <NavLinks
                   links={links}
                   defaultClassName="block border-l-4 border-transparent py-2 px-3 text-base font-medium text-gray-300 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
