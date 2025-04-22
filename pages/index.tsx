@@ -51,21 +51,27 @@ export default function Home() {
       <Container>
         <main className="flex w-full flex-col justify-center gap-14 rounded-md">
           <Hero />
-          <hr className="w-full border-white" />
-          <div className="grid grid-cols-2 gap-8">
-            {socialLinks.map((link, index) => (
-              <div key={index} className="grid-cols-1">
-                <SocialCard socialLink={link} />
-              </div>
-            ))}
+          <hr className="w-full border-foreground" />
+          <div className="flex flex-col gap-8 text-center">
+            <h2 className="text-xl font-medium">Professional Links</h2>
+            <div className="grid grid-cols-2 gap-8">
+              {socialLinks.map((link, index) => (
+                <div key={index} className="grid-cols-1">
+                  <SocialCard socialLink={link} />
+                </div>
+              ))}
+            </div>
           </div>
-          <hr className="w-full border-white" />
-          <div className="grid grid-cols-2 gap-8">
-            {otherSocialLinks.map((link, index) => (
-              <div key={index} className="grid-cols-1">
-                <SocialCard socialLink={link} />
-              </div>
-            ))}
+          <hr className="w-full border-foreground" />
+          <div>
+            <h2 className="text-xl font-medium">Social Links</h2>
+            <div className="grid grid-cols-2 gap-8">
+              {otherSocialLinks.map((link, index) => (
+                <div key={index} className="grid-cols-1">
+                  <SocialCard socialLink={link} />
+                </div>
+              ))}
+            </div>
           </div>
         </main>
       </Container>

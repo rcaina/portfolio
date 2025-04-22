@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Container from "@/components/layout/Container";
+import ExperienceCard from "@/components/common/ExperienceCard";
+import { EXPERIENCES } from "@/lib/contants";
 
 const Experience = () => {
   return (
@@ -9,9 +11,27 @@ const Experience = () => {
         <meta name="description" content="View my experience and work" />
       </Head>
       <Container>
-        <div className="py-8">
-          <h1 className="mb-6 text-4xl font-bold">Experience</h1>
-          <div className="grid gap-6">{/* Project content will go here */}</div>
+        <div className="flex flex-col gap-8">
+          <div className="flex w-full flex-col items-center gap-4 rounded-xl">
+            <div className="m-14 flex w-full items-center gap-4">
+              <hr className="w-full border-secondary-500" />
+              <h2 className="text-4xl">EXPERIENCE</h2>
+              <hr className="w-full border-secondary-500" />
+            </div>
+          </div>
+          <div className="flex flex-col gap-12">
+            {EXPERIENCES.map((experience, index) => (
+              <div key={index}>
+                <ExperienceCard
+                  experience={experience}
+                  imagePosition={index % 2 ? "left" : "right"}
+                />
+                {index !== EXPERIENCES.length - 1 && (
+                  <hr className="w-full border-foreground" />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </>

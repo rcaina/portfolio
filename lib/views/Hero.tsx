@@ -1,5 +1,6 @@
 import Image from "next/image";
 import profile from "@/public/images/profileImg.jpg";
+import { JOB_TITLE, NAME } from "../contants";
 
 const Hero = () => {
   return (
@@ -17,11 +18,9 @@ const Hero = () => {
         <hr className="w-full border-secondary-500" />
       </div>
       <div className="flex flex-col items-center space-y-4">
-        <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-          Renzo Caina
-        </h1>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">{NAME}</h1>
         <p className="text-lg text-secondary-500 sm:text-xl md:text-2xl lg:text-3xl">
-          Full Stack Software Developer
+          {JOB_TITLE}
         </p>
       </div>
     </div>

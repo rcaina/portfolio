@@ -60,7 +60,6 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --chown=nextjs:nodejs prisma ./prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/sharp /app/node_modules/sharp
 
 ENV NEXT_SHARP_PATH=/app/node_modules/sharp
@@ -78,4 +77,4 @@ ENV PORT 8080
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD npx prisma migrate deploy && HOSTNAME="0.0.0.0" node server.js
+CMD HOSTNAME="0.0.0.0" node server.js

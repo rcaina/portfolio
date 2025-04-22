@@ -1,23 +1,22 @@
 import { Disclosure, Menu } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-// import { Role } from "@prisma/client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FC } from "react";
 import { NavProgress } from "components/layout/NavProgress";
 import { cx } from "lib/utils";
-// import { GetUserResponse } from "@/pages/api/users/[id]";
-//  import logo from "public/images/logo.svg";
+import name_logo from "@/public/images/name_logo.png";
+import Image from "next/image";
 
 const links = [
   {
     label: "Home",
     href: "/",
   },
-  {
-    label: "Projects",
-    href: "/projects",
-  },
+  // {
+  //   label: "Projects",
+  //   href: "/projects",
+  // },
   {
     label: "Education",
     href: "/education",
@@ -55,23 +54,22 @@ export const NavLinks: FC<{
 export default function Header() {
   return (
     <>
-      <Disclosure as="nav" className="shadow shadow-white">
+      <Disclosure as="nav" className="sticky top-0 z-50 shadow shadow-white">
         {({ open }) => (
           <>
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto bg-background px-4 sm:px-6 lg:px-8">
               <div className="flex h-16">
                 <div className="flex flex-1">
                   <div className="flex flex-shrink-0 items-center">
                     <Link href="/">
-                      {/* <Image
-                         priority
-                         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                         src={logo}
-                         alt="WBL Logo"
-                         width={200}
-                         height={36}
-                       /> */}
-                      <div>LOGO HERE</div>
+                      <Image
+                        priority
+                        src={name_logo}
+                        alt="Name"
+                        width={50}
+                        height={36}
+                        className="rounded-full border border-black"
+                      />
                     </Link>
                   </div>
                   <div className="hidden md:flex md:flex-1 md:items-center md:justify-center">
@@ -119,8 +117,8 @@ export default function Header() {
               <div className="space-y-1 pb-3 pt-2">
                 <NavLinks
                   links={links}
-                  defaultClassName="block border-l-4 border-transparent py-2 px-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-                  activeClassName="block border-l-4 border-primary-500 bg-primary-50 py-2 px-3 text-base font-medium text-primary-700"
+                  defaultClassName="block border-l-4 border-transparent py-2 px-3 text-base font-medium text-gray-300 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                  activeClassName="block border-l-4 border-foreground py-2 px-3 text-base font-bold text-foreground"
                 />
               </div>
               <div className="border-t border-gray-200 pb-3 pt-4">
