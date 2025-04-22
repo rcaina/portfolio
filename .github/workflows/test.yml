@@ -39,7 +39,6 @@ jobs:
       - name: Installing NPM
         run: |
           npm ci
-          npx prisma generate
 
       - name: Linting check
         run: npm run lint
