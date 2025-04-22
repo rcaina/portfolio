@@ -63,7 +63,7 @@ export default function Home() {
             </div>
           </div>
           <hr className="w-full border-foreground" />
-          <div>
+          <div className="flex flex-col gap-8 text-center">
             <h2 className="text-xl font-medium">Social Links</h2>
             <div className="grid grid-cols-2 gap-8">
               {otherSocialLinks.map((link, index) => (
