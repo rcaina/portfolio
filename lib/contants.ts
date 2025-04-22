@@ -26,7 +26,7 @@ export const EXPERIENCES = [
     color: "",
   },
   {
-    company: "Resonant",
+    company: "Resonant (Subsidiary of Renew Biotechnologies)",
     title: "Full Stack Software Developer",
     date: "August 2023 - April 2025",
     image: resonant_logo,
@@ -41,7 +41,7 @@ export const EXPERIENCES = [
     color: "#7371fc",
   },
   {
-    company: "Wasatch Biolabs",
+    company: "Wasatch Biolabs (Subsidiary of Renew Biotechnologies)",
     title: "Full Stack Software Developer",
     date: "December 2023 - April 2025",
     image: wbl_logo,
