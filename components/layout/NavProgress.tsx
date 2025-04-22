@@ -77,7 +77,7 @@ export const NavProgress = () => {
     <div className="sticky top-0 z-[200] h-1 w-full">
       <div
         ref={scope}
-        className="left-0 h-full w-full origin-left bg-highlight-600"
+        className="left-0 h-full w-full origin-left bg-secondary-500"
       ></div>
     </div>
   );

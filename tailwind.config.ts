@@ -46,17 +46,17 @@ export default {
           950: "#666666", // Very dark gray
         },
         secondary: {
-          50: "#e5e5f2", // Very light version of the primary color
-          100: "#ccccea", // Lighter
-          200: "#b3b3e0", // Light
-          300: "#9999d6", // Soft light
-          400: "#8080cc", // Slightly lighter than base
-          500: "#6666b3", // Base tone
-          600: "#3A397E", // Your primary color
-          700: "#2e2d66", // Darker
-          800: "#22224d", // Even darker
-          900: "#171733", // Very dark
-          950: "#0b0b1a", // Near black
+          50: "#eff6ff", // Very light blue
+          100: "#dbeafe", // Pale sky blue
+          200: "#bfdbfe", // Light blue
+          300: "#93c5fd", // Soft blue
+          400: "#60a5fa", // Mid-light blue
+          500: "#3b82f6", // ⚡ Base electric blue
+          600: "#2563eb", // Slightly darker
+          700: "#1d4ed8", // Deep blue
+          800: "#1e40af", // Very deep
+          900: "#1e3a8a", // Night blue
+          950: "#172554", // Almost black with blue tint
         },
         highlight: {
           50: "#efefff", // Very light version of the highlight color

@@ -20,7 +20,7 @@ export default function ProgressBar({ completed, size, segments }: Props) {
           <div
             key={i}
             className={cx("inline-block h-2 flex-1", {
-              "bg-highlight-600": isCompleted,
+              "bg-secondary-400": isCompleted,
               "bg-primary-500": !isCompleted,
             })}
           />

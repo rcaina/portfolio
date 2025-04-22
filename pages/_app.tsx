@@ -11,6 +11,7 @@ import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { fetcher } from "@/lib/utils";
+import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 
 // import "@/styles/richTextEditorGlobalStyles.css";
 
@@ -44,19 +45,21 @@ export default function App({
           revalidateOnReconnect: false,
         }}
       >
-        <SessionProvider
-          session={session}
-          refetchInterval={10 * 60} // Re-fetch every 10 minutes
-          refetchOnWindowFocus={true}
-          refetchWhenOffline={false}
-        >
-          <TooltipProvider delayDuration={400}>
-            <Layout>
-              <Component {...pageProps} />
-              <Toaster position="bottom-right" transition={Slide} />
-            </Layout>
-          </TooltipProvider>
-        </SessionProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <SessionProvider
+            session={session}
+            refetchInterval={10 * 60} // Re-fetch every 10 minutes
+            refetchOnWindowFocus={true}
+            refetchWhenOffline={false}
+          >
+            <TooltipProvider delayDuration={400}>
+              <Layout>
+                <Component {...pageProps} />
+                <Toaster position="bottom-right" transition={Slide} />
+              </Layout>
+            </TooltipProvider>
+          </SessionProvider>
+        </ThemeProvider>
       </SWRConfig>
     </>
   );
