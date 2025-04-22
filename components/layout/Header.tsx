@@ -13,10 +13,6 @@ const links = [
     label: "Home",
     href: "/",
   },
-  // {
-  //   label: "Projects",
-  //   href: "/projects",
-  // },
   {
     label: "Education",
     href: "/education",
@@ -81,20 +77,10 @@ export default function Header() {
                   </div>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:items-center">
-                  {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                         <span className="sr-only">Open user menu</span>
-                        {/* {session.user.email && (
-                             <Image
-                               className="h-8 w-8 rounded-full"
-                               src={getGravatarURL(session.user.email)}
-                               width={32}
-                               height={32}
-                               alt=""
-                             />
-                           )} */}
                       </Menu.Button>
                     </div>
                   </Menu>
@@ -120,41 +106,6 @@ export default function Header() {
                   defaultClassName="block border-l-4 border-transparent py-2 px-3 text-base font-medium text-gray-300 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                   activeClassName="block border-l-4 border-foreground py-2 px-3 text-base font-bold text-foreground"
                 />
-              </div>
-              <div className="border-t border-gray-200 pb-3 pt-4">
-                <div className="flex items-center px-4">
-                  <div className="flex-shrink-0">
-                    {/* {session.user.email && (
-                         <Image
-                           className="h-10 w-10 rounded-full"
-                           src={getGravatarURL(session.user.email)}
-                           width={40}
-                           height={40}
-                           alt=""
-                         />
-                       )} */}
-                  </div>
-                  <div className="ml-3">
-                    <div className="text-base font-medium text-gray-800">
-                      {/* {session?.user.name} */}
-                    </div>
-                    <div className="text-sm font-medium text-gray-500">
-                      {/* {session?.user.email} */}
-                    </div>
-                    <div className="text-sm font-medium text-gray-500">
-                      {/* {userData?.company?.name} */}
-                    </div>
-                  </div>
-                </div>
-                {/* <div className="mt-3 space-y-1">
-                     {signedInMenuItems.map((item) => (
-                       <UserMenuItem
-                         key={item.label}
-                         item={item}
-                         className="block cursor-pointer px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                       />
-                     ))}
-                   </div> */}
               </div>
             </Disclosure.Panel>
           </>

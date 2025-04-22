@@ -25,13 +25,11 @@ const ExperienceCard: React.FC<{
       transition={{ duration: 0.5 }}
       className="mb-16 w-full"
     >
-      {/* Container that changes order based on imagePosition prop */}
       <div
         className={`flex w-full flex-col items-center gap-8 md:flex-row ${
           imagePosition === "left" ? "md:flex-row" : "md:flex-row-reverse"
         }`}
       >
-        {/* Image Section */}
         <div className="w-full md:w-1/2">
           <div
             className={`relative flex h-[300px] w-full items-center justify-center overflow-hidden rounded-lg`}
@@ -49,7 +47,6 @@ const ExperienceCard: React.FC<{
           </div>
         </div>
 
-        {/* Content Section */}
         <div className="w-full space-y-4 text-left md:w-1/2">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
             {experience.title}
@@ -61,11 +58,11 @@ const ExperienceCard: React.FC<{
             }}
           />
           <p className="text-gray-500 dark:text-gray-400">{experience.date}</p>
-          <p className="text-gray-700 dark:text-gray-300">
+          <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300">
             {experience.description.map((bulletPoint) => (
               <li key={bulletPoint}>{bulletPoint}</li>
             ))}
-          </p>
+          </ul>
           {experience.technologies && (
             <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech) => (

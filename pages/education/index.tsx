@@ -51,7 +51,6 @@ const Education = () => {
             <p className="text-md italic text-white/70">{MINOR} (2015–2019)</p>
           </div>
 
-          {/* Optional: Building Images */}
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-12">
             <Image
               src={csBuilding}
