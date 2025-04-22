@@ -1,18 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "files.stripe.com",
-        pathname: "/links/**",
-      },
-      {
-        protocol: "https",
-        hostname: "www.gravatar.com",
-        pathname: "/**",
-      },
-    ],
+    remotePatterns: [],
   },
   reactStrictMode: true,
   output: "standalone",
