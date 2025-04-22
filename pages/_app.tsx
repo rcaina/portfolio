@@ -6,14 +6,13 @@ import { Slide, ToastContainer as Toaster } from "react-toastify";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Layout from "@/components/layout/Layout";
-import type { Session } from "next-auth";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 
 export default function App({
   Component,
   pageProps: { ...pageProps },
-}: AppProps<{ session: Session }>) {
+}: AppProps<Record<string, never>>) {
   return (
     <>
       <Head>
