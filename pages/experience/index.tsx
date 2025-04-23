@@ -28,7 +28,7 @@ const Experience = () => {
           </div>
           <div className="text-center">
             <a
-              href={`https://rcaina.github.io/files/resume.pdf`}
+              href={`https://rcaina.github.io/portfolio/files/renzo_caina_resume.pdf`}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-foreground p-4 hover:text-secondary-500 hover:shadow-lg hover:shadow-secondary-500"
