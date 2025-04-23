@@ -56,7 +56,7 @@ export default function Home() {
             <div className="flex: gap-8">
               <div className="flex items-center justify-center gap-4">
                 <h2 className="items-center justify-center text-xl font-medium">
-                  Contact:
+                  Email:
                 </h2>
                 <a
                   href="#"
