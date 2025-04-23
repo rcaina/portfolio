@@ -116,7 +116,9 @@ export const EXPERIENCES = [
     image: byu_logo,
     landingPage: "https://www.byu.edu/",
     portal: "",
-    description: [""],
+    description: [
+      "Manage multiple windows applications for the College of Life Sciences at BYU",
+    ],
     technologies: [],
     subsidiaries: [],
   },
@@ -129,8 +131,8 @@ export const EXPERIENCES = [
     portal: "",
     description: [
       "Learned the linux operating systems, softwares, and command line.",
-      "Manage multiple linux applications for the college of life sciences at BYU",
-      "In the process of solving software issues I have learned ansible and editing software such as vim.",
+      "Manage multiple linux applications for the College of Life Sciences at BYU",
+      "In the process of solving software issues I have learned ansible and editing files using vim.",
     ],
     technologies: [],
     subsidiaries: [],
