@@ -21,6 +21,14 @@ const links = [
     label: "Experience",
     href: "/experience",
   },
+  // {
+  //   label: "Projects",
+  //   href: "/projects",
+  // },
+  // {
+  //   label: "tech-stack",
+  //   href: "/tech-stack",
+  // },
 ];
 
 export const NavLinks: FC<{

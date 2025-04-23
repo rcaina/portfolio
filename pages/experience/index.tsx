@@ -19,6 +19,17 @@ const Experience = () => {
               <hr className="w-full border-secondary-500" />
             </div>
           </div>
+          <div className="text-center">
+            <a
+              href="/files/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-foreground p-4 hover:text-secondary-500 hover:shadow-lg hover:shadow-secondary-500"
+            >
+              Download Resume
+            </a>
+          </div>
+          <hr className="w-full border-foreground" />
           <div className="flex flex-col gap-12">
             {EXPERIENCES.map((experience, index) => (
               <div key={index}>
