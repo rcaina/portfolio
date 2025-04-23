@@ -1,12 +1,19 @@
 import { Disclosure, Menu } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FC } from "react";
 import { NavProgress } from "components/layout/NavProgress";
 import { cx } from "lib/utils";
 import name_logo from "@/public/images/name_logo.png";
+import full_name_logo from "@/public/images/full_name_logo.png";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const links = [
   {
@@ -56,6 +63,7 @@ export const NavLinks: FC<{
 };
 
 export default function Header() {
+  const { setTheme, theme } = useTheme();
   return (
     <>
       <Disclosure as="nav" className="sticky top-0 z-50 shadow shadow-white">
@@ -64,7 +72,19 @@ export default function Header() {
             <div className="container mx-auto bg-background px-4 sm:px-6 lg:px-8">
               <div className="flex h-16">
                 <div className="flex flex-1">
-                  <div className="flex flex-shrink-0 items-center">
+                  <div className="hidden flex-shrink-0 items-center md:flex">
+                    <Link href="/">
+                      <Image
+                        priority
+                        src={full_name_logo}
+                        alt="Full_Name"
+                        width={175}
+                        height={36}
+                        className="rounded-xl border border-black bg-white pl-2 pr-[3px]"
+                      />
+                    </Link>
+                  </div>
+                  <div className="flex flex-shrink-0 items-center md:hidden">
                     <Link href="/">
                       <Image
                         priority
@@ -82,6 +102,20 @@ export default function Header() {
                       defaultClassName="mr-4 inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-md font-medium hover:border-black hover:font-bold hover:text-secondary-700"
                       activeClassName="font-bold mr-4 inline-flex items-center border-b-2 border-secondary-500 px-1 pt-1 text-md font-semibold"
                     />
+                  </div>
+                  <div className="flex w-full items-center justify-center md:w-auto md:justify-end">
+                    <div
+                      className="rounded-full border border-foreground p-2 text-foreground hover:bg-secondary-500"
+                      onClick={() =>
+                        setTheme(theme === "dark" ? "light" : "dark")
+                      }
+                    >
+                      {theme === "dark" ? (
+                        <SunIcon className="h-6 w-6" />
+                      ) : (
+                        <MoonIcon className="h-6 w-6" />
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:items-center">
