@@ -103,9 +103,9 @@ export default function Header() {
                       activeClassName="font-bold mr-4 inline-flex items-center border-b-2 border-secondary-500 px-1 pt-1 text-md font-semibold"
                     />
                   </div>
-                  <div className="flex items-center justify-end">
+                  <div className="flex w-full items-center justify-center md:w-auto md:justify-end">
                     <div
-                      className="rounded-full border border-foreground p-2 text-foreground"
+                      className="rounded-full border border-foreground p-2 text-foreground hover:bg-secondary-500"
                       onClick={() =>
                         setTheme(theme === "dark" ? "light" : "dark")
                       }
