@@ -40,9 +40,8 @@ const ExperienceCard: React.FC<{
               priority
               width={200}
               height={200}
-              className={`rounded-xl ${
-                experience.color ? `border-2 border-[${experience.color}]` : ""
-              }`}
+              className={`rounded-xl border`}
+              style={experience.color ? { borderColor: experience.color } : {}}
             />
           </div>
         </div>
@@ -79,7 +78,8 @@ const ExperienceCard: React.FC<{
             <QuickLink
               data={{
                 href: `${experience.portal}`,
-                label: "Go to portal",
+                label: "Go to testing portal",
+                showIcon: true,
               }}
             />
           )}
