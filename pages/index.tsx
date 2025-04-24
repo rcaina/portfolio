@@ -52,25 +52,21 @@ export default function Home() {
         <main className="flex w-full flex-col justify-center gap-14 rounded-md">
           <Hero />
           <hr className="w-full border-foreground" />
-          <div className="flex flex-col gap-8 text-center">
-            <div className="flex: gap-8">
-              <div className="flex items-center justify-center gap-4">
-                <h2 className="items-center justify-center text-xl font-medium">
-                  Email:
-                </h2>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href =
-                      "mailto:" + "renzo.caina" + "@" + "outlook.com";
-                  }}
-                  className="group inline-flex items-center justify-center text-lg text-secondary-500 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-                >
-                  renzo.caina@outlook.com
-                </a>
-              </div>
-            </div>
+          <div className="flex items-center justify-center gap-4">
+            <h2 className="items-center justify-center text-xl font-medium">
+              Email:
+            </h2>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href =
+                  "mailto:" + "renzo.caina" + "@" + "outlook.com";
+              }}
+              className="group inline-flex items-center justify-center text-lg text-secondary-500 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
+            >
+              renzo.caina@outlook.com
+            </a>
           </div>
           <hr className="w-full border-foreground" />
           <div className="flex flex-col gap-8 text-center">

@@ -8,6 +8,7 @@ import Head from "next/head";
 import Layout from "@/components/layout/Layout";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
+import ChatWidget from "@/components/common/ChatWidget";
 
 export default function App({
   Component,
@@ -36,6 +37,7 @@ export default function App({
         <TooltipProvider delayDuration={400}>
           <Layout>
             <Component {...pageProps} />
+            <ChatWidget />
             <Toaster position="bottom-right" transition={Slide} />
           </Layout>
         </TooltipProvider>
