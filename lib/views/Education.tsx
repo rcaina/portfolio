@@ -1,7 +1,6 @@
 import Image from "next/image";
 import byulogo from "@/public/images/byulogo.png";
 import csBuilding from "@/public/images/csbuilding.jpg";
-import marriot from "@/public/images/marriot.jpg";
 import { MAJOR, MINOR } from "@/lib/contants";
 
 const Education = () => {
@@ -36,18 +35,11 @@ const Education = () => {
         <p className="text-md italic text-white/70">{MINOR} (2015–2019)</p>
       </div>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-12">
+      <div className="flex items-center justify-center gap-8 sm:gap-12 md:flex-col">
         <Image
           src={csBuilding}
           alt="CS Building"
           className="rounded-lg bg-foreground"
-          width={300}
-          height={300}
-        />
-        <Image
-          src={marriot}
-          alt="Business Building"
-          className="rounded-lg bg-white"
           width={300}
           height={300}
         />
