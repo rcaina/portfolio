@@ -1,3 +1,4 @@
+import { SYSTEM_PROMPT } from "@/lib/contants";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { OpenAI } from "openai";
 
@@ -13,17 +14,36 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const response = await openai.chat.completions.create({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: message }],
+          messages: [
+            {
+              role: "system",
+              content: SYSTEM_PROMPT,
+            },
+            { role: "user", content: message },
+          ],
         });
 
         return res
           .status(200)
           .json({ reply: response.choices[0].message.content });
-      } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
         console.error(error);
+
+        // Handle quota exceeded error
+        if (
+          error?.response?.status === 429 ||
+          error?.message?.includes("quota")
+        ) {
+          return res.status(429).json({
+            reply:
+              "Sorry! We've run out of AI credits for now. Please try again later.",
+          });
+        }
+
         return res
           .status(500)
-          .json({ error: "Something went wrong with OpenAI" });
+          .json({ reply: "Something went wrong with OpenAI." });
       }
     }
 

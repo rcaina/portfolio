@@ -31,13 +31,19 @@ export default function Chatbot() {
         {messages.map((msg, i) => (
           <div
             key={i}
-            className={`rounded p-2 text-sm ${
-              msg.role === "user"
-                ? "bg-secondary-600 text-right text-foreground"
-                : "bg-gray-600 text-left text-foreground"
-            }`}
+            className={`flex ${
+              msg.role === "user" ? "justify-end" : "justify-start"
+            } mb-2`}
           >
-            {msg.content}
+            <div
+              className={`max-w-[75%] whitespace-pre-wrap break-words rounded-lg p-3 text-sm ${
+                msg.role === "user"
+                  ? "bg-blue-600 text-right text-white"
+                  : "bg-gray-300 text-left text-black"
+              }`}
+            >
+              {msg.content}
+            </div>
           </div>
         ))}
         {loading && <div className="italic text-gray-500">Typing...</div>}
