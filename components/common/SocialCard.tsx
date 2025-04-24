@@ -16,16 +16,11 @@ const SocialCard = ({ socialLink }: Props) => {
         <Image
           src={socialLink.img}
           alt="Profile picture"
-          className="h-[200px] w-[200px] rounded-xl bg-white object-cover"
+          className="h-[50px] w-[65px] rounded-xl bg-white object-cover md:h-[100px] md:w-[100px]"
           priority
-          width={200}
-          height={200}
+          // width={100}
+          // height={100}
         />
-      </div>
-      <div className="flex flex-col items-center space-y-4">
-        <h1 className="text-xl font-medium sm:text-2xl md:text-3xl lg:text-4xl">
-          {socialLink.name}
-        </h1>
       </div>
     </Link>
   );

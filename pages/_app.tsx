@@ -33,7 +33,7 @@ export default function App({
         />
         <link rel="apple-touch-icon" href="/icons/apple-icon.png"></link>
       </Head>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <TooltipProvider delayDuration={400}>
           <Layout>
             <Component {...pageProps} />
