@@ -23,10 +23,10 @@ const ExperienceCard: React.FC<{
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-16 w-full"
+      className="w-full"
     >
       <div
-        className={`flex w-full flex-col items-center gap-8 md:flex-row ${
+        className={`flex w-full flex-col items-center gap-8 space-y-8 md:flex-row ${
           imagePosition === "left" ? "md:flex-row" : "md:flex-row-reverse"
         }`}
       >
