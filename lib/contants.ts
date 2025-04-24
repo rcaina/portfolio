@@ -4,12 +4,28 @@ import renew_logo from "@/public/images/renew_logo.jpg";
 import fiddle_logo from "@/public/images/fiddle_logo.jpg";
 import fitsnitch_logo from "@/public/images/fitsnitch_logo.png";
 import byu_logo from "@/public/images/byu_logo.png";
+import { SocialLink } from "../pages";
+import githublogo from "@/public/images/githublogo.png";
+import linkedInLogo from "@/public/images/linkedInLogo.png";
 
 export const NAME = "Renzo Caiña";
 export const JOB_TITLE = "Full Stack Software Developer";
 export const UNIVERSITY = "Brigham Young University";
 export const MAJOR = "Bachelor of Science in Computer Science";
 export const MINOR = "Minor in Business Management";
+
+export const socialLinks: SocialLink[] = [
+  {
+    name: "Github",
+    link: "https://github.com/rcaina",
+    img: githublogo,
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/renzocaina/",
+    img: linkedInLogo,
+  },
+];
 
 export const EXPERIENCES = [
   {
@@ -362,5 +378,9 @@ Skills:
   - OpenAI API
   - 
 .
+
+If asked about something Renzo doesn't have experience with, respond honestly and redirect them to what he *does* know.
+
+Never say you're a general-purpose assistant. Only focus on Renzo
 
 If someone asks a question unrelated to Renzo’s work, politely say: "I'm here to chat about Renzo and his background. Want to know more about his experience, projects, or skills?`;
