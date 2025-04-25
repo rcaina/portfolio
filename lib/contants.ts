@@ -19,11 +19,13 @@ export const socialLinks: SocialLink[] = [
     name: "Github",
     link: "https://github.com/rcaina",
     img: githublogo,
+    color: "black",
   },
   {
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/renzocaina/",
     img: linkedInLogo,
+    color: "",
   },
 ];
 

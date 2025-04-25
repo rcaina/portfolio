@@ -13,7 +13,9 @@ const Experience = () => {
     <div className="flex flex-col gap-8">
       <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <div className="flex w-full items-center justify-center gap-4">
+          <hr className="w-full border-secondary-500" />
           <h2 className="text-4xl">EXPERIENCE</h2>
+          <hr className="w-full border-secondary-500" />
         </div>
       </div>
       <div className="flex flex-col gap-12">
@@ -36,7 +38,7 @@ const Experience = () => {
             {experience.subsidiaries?.length > 0 &&
               isOpen &&
               experience.subsidiaries.map((sub, index) => (
-                <div key={index} className="pl-20 pr-20">
+                <div key={index} className="pl-5 pr-5">
                   <ExperienceCard
                     key={index}
                     experience={sub}

@@ -16,7 +16,9 @@ const SocialCard = ({ socialLink }: Props) => {
         <Image
           src={socialLink.img}
           alt="Profile picture"
-          className="h-[40px] w-[45px] rounded-xl bg-white object-cover md:h-[65px] md:w-[65px]"
+          className={`h-[40px] w-[45px] rounded-xl bg-white object-cover md:h-[65px] md:w-[65px] ${
+            socialLink.color ? `border border-${socialLink.color}` : ""
+          }`}
           priority
         />
       </div>
