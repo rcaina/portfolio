@@ -29,7 +29,7 @@ export default function Header() {
                         alt="Full_Name"
                         width={175}
                         height={36}
-                        className="rounded-xl border border-black bg-white pl-2 pr-[3px]"
+                        className="rounded-xl border border-black bg-white pl-2  pr-2"
                       />
                     </Link>
                   </div>
