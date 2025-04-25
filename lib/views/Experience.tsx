@@ -27,7 +27,7 @@ const Experience = () => {
               <div className="mb-8 flex justify-center">
                 <button
                   onClick={() => toggleAccordion(!isOpen)}
-                  className="text-sm text-blue-600 hover:underline focus:outline-none"
+                  className="m-8 hover:text-secondary-600"
                 >
                   {isOpen ? "Hide Subsidiaries" : "Show Subsidiaries"}
                 </button>

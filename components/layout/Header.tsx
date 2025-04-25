@@ -1,4 +1,4 @@
-import { Disclosure, Menu } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React from "react";
@@ -12,37 +12,42 @@ export default function Header() {
   const { setTheme, theme } = useTheme();
   return (
     <>
-      <Disclosure as="nav" className="sticky top-0 z-50 shadow shadow-white">
+      <Disclosure
+        as="nav"
+        className="sticky top-0 z-50 shadow shadow-foreground"
+      >
         {() => (
           <>
             <div className="container mx-auto bg-background px-4 sm:px-6 lg:px-8">
               <div className="flex h-16">
-                <div className="flex flex-1 justify-between">
-                  <div className="hidden flex-shrink-0 items-center md:flex">
-                    <Link href="/">
-                      <Image
-                        priority
-                        src={full_name_logo}
-                        alt="Full_Name"
-                        width={175}
-                        height={36}
-                        className="rounded-xl border border-black bg-white pl-2 pr-[3px]"
-                      />
-                    </Link>
+                <div className="flex flex-1 items-center justify-between">
+                  <div>
+                    <div className="hidden items-center md:flex">
+                      <Link href="/">
+                        <Image
+                          priority
+                          src={full_name_logo}
+                          alt="Full_Name"
+                          width={175}
+                          height={36}
+                          className="rounded-xl border border-black bg-white pl-2 pr-[3px]"
+                        />
+                      </Link>
+                    </div>
+                    <div className="flex flex-shrink-0 items-center md:hidden">
+                      <Link href="/">
+                        <Image
+                          priority
+                          src={name_logo}
+                          alt="Name"
+                          width={50}
+                          height={36}
+                          className="rounded-full border border-black"
+                        />
+                      </Link>
+                    </div>
                   </div>
-                  <div className="flex flex-shrink-0 items-center md:hidden">
-                    <Link href="/">
-                      <Image
-                        priority
-                        src={name_logo}
-                        alt="Name"
-                        width={50}
-                        height={36}
-                        className="rounded-full border border-black"
-                      />
-                    </Link>
-                  </div>
-                  <div className="flex w-full items-center justify-end md:w-auto">
+                  <div className="md:w-auto">
                     <div
                       className="rounded-full border border-foreground p-2 text-foreground hover:bg-secondary-500"
                       onClick={() =>
@@ -56,15 +61,6 @@ export default function Header() {
                       )}
                     </div>
                   </div>
-                </div>
-                <div className="hidden md:ml-6 md:flex md:items-center">
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                        <span className="sr-only">Open user menu</span>
-                      </Menu.Button>
-                    </div>
-                  </Menu>
                 </div>
               </div>
             </div>
