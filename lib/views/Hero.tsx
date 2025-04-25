@@ -13,11 +13,11 @@ const Hero = () => {
             alt="Profile picture"
             className="rounded-full"
             priority
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
-          <div className="flex w-full flex-col gap-4">
-            <div>
+          <div className="flex w-full flex-col gap-4 text-left">
+            <div className="p-2">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
                 {NAME}
               </h1>
@@ -41,22 +41,25 @@ const Hero = () => {
             </div>
             <hr className="mb-6 w-full border-secondary-500" />
 
-            <div className="flex items-center gap-8">
-              <div>
-                <button
-                  onClick={() =>
-                    window.open(
-                      "https://rcaina.github.io/portfolio/files/renzo_caina_resume.pdf",
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
-                  className="rounded-xl border border-foreground p-3 text-sm hover:shadow-lg hover:shadow-secondary-500 md:text-base"
-                >
-                  View Resume
-                </button>
-              </div>
-
+            <div className="flex items-center gap-4 p-2">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://rcaina.github.io/portfolio/files/renzo_caina_resume.pdf",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                className="rounded-xl border border-foreground p-3 text-sm shadow-lg hover:shadow-secondary-500 md:text-base"
+              >
+                View Resume
+              </button>
+              {/* <QuickLink
+                data={{
+                  href: "https://rcaina.github.io/portfolio/files/renzo_caina_resume.pdf",
+                  label: "View Resume",
+                }}
+              /> */}
               {socialLinks.map((link, index) => (
                 <div key={index}>
                   <SocialCard socialLink={link} />

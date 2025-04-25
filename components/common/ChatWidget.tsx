@@ -9,7 +9,7 @@ export default function ChatWidget() {
     <div className="m-auto">
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-12 right-20 z-50 rounded-full bg-secondary-500 p-3 text-lg text-white shadow-lg"
+        className="fixed bottom-12 right-10 z-50 rounded-full bg-secondary-500 p-3 text-lg text-white shadow-lg"
       >
         🤖 AI Assistant
       </button>

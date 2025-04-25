@@ -23,7 +23,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <main className="flex w-full flex-col items-center justify-center gap-14 rounded-md">
+        <main className="flex flex-col items-center gap-14 rounded-md text-center">
           <Hero />
           <hr className="w-full border-secondary-500" />
           <Experience />
