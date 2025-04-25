@@ -9,6 +9,7 @@ export type SocialLink = {
   name: string;
   link: string;
   img: StaticImageData;
+  color?: string;
 };
 
 export default function Home() {
@@ -23,11 +24,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <main className="flex flex-col items-center gap-14 rounded-md text-center">
+        <main className="m-auto flex flex-col items-center gap-14 text-center">
           <Hero />
-          <hr className="w-full border-secondary-500" />
           <Experience />
-          <hr className="w-full border-secondary-500" />
           <Education />
         </main>
       </Container>

@@ -6,7 +6,13 @@ import { MAJOR, MINOR } from "@/lib/contants";
 const Education = () => {
   return (
     <div className="flex w-full flex-col items-center gap-8 text-center">
-      <h2 className="text-4xl">EDUCATION</h2>
+      <div className="flex w-full flex-col items-center gap-4 rounded-xl">
+        <div className="flex w-full items-center justify-center gap-4">
+          <hr className="w-full border-secondary-500" />
+          <h2 className="text-4xl">EDUCATION</h2>
+          <hr className="w-full border-secondary-500" />
+        </div>
+      </div>
 
       <Image
         src={byulogo}
@@ -20,8 +26,6 @@ const Education = () => {
       <p className="text-lg text-secondary-500 sm:text-xl md:text-2xl lg:text-3xl">
         Provo, UT
       </p>
-
-      <hr className="w-full border-secondary-500" />
 
       <div className="flex flex-col items-center gap-2 text-center ">
         <h2 className="text-center text-2xl font-semibold">{MAJOR}</h2>
