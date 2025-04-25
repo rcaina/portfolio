@@ -54,12 +54,6 @@ const Hero = () => {
               >
                 View Resume
               </button>
-              {/* <QuickLink
-                data={{
-                  href: "https://rcaina.github.io/portfolio/files/renzo_caina_resume.pdf",
-                  label: "View Resume",
-                }}
-              /> */}
               {socialLinks.map((link, index) => (
                 <div key={index}>
                   <SocialCard socialLink={link} />
