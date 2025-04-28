@@ -15,7 +15,7 @@ const Hero = () => {
         height={150}
       />
       <div className="flex w-full flex-col gap-4 text-center sm:w-auto sm:text-left">
-        <div>
+        <div className="ml-6 mr-6">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {NAME}
           </h1>
@@ -37,7 +37,7 @@ const Hero = () => {
           </div>
         </div>
         <hr className="w-full border-secondary-500" />
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="ml-6 mr-6 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
           <button
             onClick={() =>
               window.open(
