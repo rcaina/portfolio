@@ -1,4 +1,4 @@
-import { SYSTEM_PROMPT } from "@/lib/contants";
+import { SYSTEM_PROMPT } from "@/lib/utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { OpenAI } from "openai";
 
