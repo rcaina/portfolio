@@ -18,7 +18,7 @@ export default function ChatWidget() {
         <div className="fixed bottom-20 right-6 z-50 max-h-[70vh] w-80 rounded-xl border border-foreground bg-background shadow-lg">
           <div className="flex items-center justify-between rounded-t-xl border-b border-foreground bg-background  p-2">
             <span className="font-semibold text-secondary-500">
-              {"Renzo's AI Assistant"}
+              {"Renzo AI"}
             </span>
             <button
               onClick={() => setOpen(false)}
