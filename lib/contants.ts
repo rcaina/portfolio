@@ -210,9 +210,18 @@ export const CODING_PROJECTS = [
     github_links: ["https://github.com/rcaina/portfolio"],
     description:
       "My personal portfolio built with Next.js, TailwindCSS, and TypeScript.",
-    technologies: ["Next.js", "TailwindCSS", "TypeScript", "Vercel"],
+    ////follow tech stack from read me for technologies
+    technologies: [
+      "Next.js",
+      "TailwindCSS",
+      "TypeScript",
+      "Vercel",
+      "React",
+      "Framer Motion",
+      "OpenAI API",
+      "Vercel",
+    ],
     link: "https://www.renzocaina.com/",
-    //black
     color: "#000000",
   },
   {

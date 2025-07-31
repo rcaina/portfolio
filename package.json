@@ -17,17 +17,11 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.332.0",
-    "@aws-sdk/lib-storage": "^3.496.0",
-    "@aws-sdk/s3-request-presigner": "^3.332.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.8",
     "@heroicons/react": "^2.0.14",
     "@hookform/resolvers": "^3.1.1",
-    "@mui/material": "^5.14.11",
-    "@next-auth/prisma-adapter": "^1.0.5",
-    "@prisma/client": "^5.9.1",
     "@radix-ui/react-accordion": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-label": "^2.0.2",
@@ -42,7 +36,6 @@
     "framer-motion": "^10.15.0",
     "micro": "^10.0.1",
     "next": "~14.2.30",
-    "next-auth": "^4.19.1",
     "next-themes": "^0.4.6",
     "openai": "^4.96.0",
     "react": "18.2.0",
@@ -54,7 +47,6 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.6.0",
     "@tailwindcss/forms": "^0.5.3",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
