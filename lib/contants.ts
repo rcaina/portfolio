@@ -7,6 +7,10 @@ import byu_logo from "@/public/images/byu_logo.png";
 import { SocialLink } from "../pages";
 import githublogo from "@/public/images/githublogo.png";
 import linkedInLogo from "@/public/images/linkedInLogo.png";
+import name_logo from "@/public/images/name_logo.png";
+import ronin_logo from "@/public/images/ronin_logo.jpg";
+import agave_logo from "@/public/images/agave_logo.png";
+import union_logo from "@/public/images/unioncp_logo.jpg";
 
 export const NAME = "Renzo Caiña";
 export const JOB_TITLE = "Full Stack Software Developer";
@@ -169,5 +173,76 @@ export const EXPERIENCES = [
     ],
     technologies: [],
     subsidiaries: [],
+  },
+];
+
+export const CODING_PROJECTS = [
+  {
+    title: "Ronin",
+    image: ronin_logo,
+    github_links: ["https://github.com/rcaina/ronin"],
+    description:
+      "Ronin is a web application that allows users to create and manage their own personal budget. Inspired by my wife and I having a unique way to manage our finances and wanting to get away from using a spreadsheet. It is built with Next.js, TailwindCSS, and TypeScript.",
+    technologies: [
+      "t3-stack",
+      "pnpm",
+      "Auth.js",
+      "Next.js",
+      "TailwindCSS",
+      "TypeScript",
+      "React",
+      "Prisma",
+      "PostgreSQL",
+      "Neon",
+      "Vercel",
+      "tanstack",
+    ],
+    link: "https://ronin-nine.vercel.app/sign-in",
+    demo_account_info: {
+      email: "demo@ronin.com",
+      password: "demo123",
+    },
+    color: "#F1C232",
+  },
+  {
+    title: "Portfolio",
+    image: name_logo,
+    github_links: ["https://github.com/rcaina/portfolio"],
+    description:
+      "My personal portfolio built with Next.js, TailwindCSS, and TypeScript.",
+    technologies: ["Next.js", "TailwindCSS", "TypeScript", "Vercel"],
+    link: "https://www.renzocaina.com/",
+    //black
+    color: "#000000",
+  },
+  {
+    title: "Family Map",
+    image: byu_logo,
+    github_links: [
+      "https://github.com/rcaina/FamilyMapApp/tree/master",
+      "https://github.com/rcaina/FamilyMapServer",
+    ],
+    description:
+      "Family Tree app for BYU CS 240. Automatically generates a family tree that is then viewable on a map with added filters of family details and connections. This project uses Java, Android Studio, and Google Maps API.",
+    technologies: ["Java", "Android Studio", "Google Maps API"],
+  },
+];
+
+export const WEBFLOW_PROJECTS = [
+  {
+    title: "Union Capital Ventures",
+    description:
+      "A landing page website for Union Capital Ventures, a venture capital firm that invests in early-stage startups.",
+    technologies: ["Webflow", "Figma"],
+    link: "https://www.unioncp.com/",
+    image: union_logo,
+    color: "#000000",
+  },
+  {
+    title: "Agave Paint & Epoxy",
+    description: "A landing page website for a paint and epoxy company.",
+    technologies: ["Webflow", "Canva"],
+    link: "https://agavepaint.com/",
+    image: agave_logo,
   },
 ];
