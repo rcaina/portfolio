@@ -8,7 +8,7 @@ const OtherProjects = () => {
         <div className="flex w-full items-center justify-center gap-4">
           <hr className="w-full border-secondary-500" />
           <div className="whitespace-nowrap">
-            <h2 className="text-4xl">OTHER PROJECTS</h2>
+            <h2 className="text-4xl">WEBFLOW PROJECTS</h2>
           </div>
           <hr className="w-full border-secondary-500" />
         </div>

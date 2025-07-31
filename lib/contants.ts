@@ -184,7 +184,7 @@ export const CODING_PROJECTS = [
     description:
       "Ronin is a web application that allows users to create and manage their own personal budget. Inspired by my wife and I having a unique way to manage our finances and wanting to get away from using a spreadsheet. It is built with Next.js, TailwindCSS, and TypeScript.",
     technologies: [
-      "t3-stack",
+      "T3-Stack",
       "pnpm",
       "Auth.js",
       "Next.js",
@@ -195,7 +195,7 @@ export const CODING_PROJECTS = [
       "PostgreSQL",
       "Neon",
       "Vercel",
-      "tanstack",
+      "Tanstack",
     ],
     link: "https://ronin-nine.vercel.app/sign-in",
     demo_account_info: {
@@ -232,7 +232,7 @@ export const WEBFLOW_PROJECTS = [
   {
     title: "Union Capital Ventures",
     description:
-      "A landing page website for Union Capital Ventures, a venture capital firm that invests in early-stage startups.",
+      "A landing page website using Webflow for Union Capital Ventures, a venture capital firm that invests in early-stage startups.",
     technologies: ["Webflow", "Figma"],
     link: "https://www.unioncp.com/",
     image: union_logo,
@@ -240,7 +240,8 @@ export const WEBFLOW_PROJECTS = [
   },
   {
     title: "Agave Paint & Epoxy",
-    description: "A landing page website for a paint and epoxy company.",
+    description:
+      "A landing page website using Webflow for a paint and epoxy company.",
     technologies: ["Webflow", "Canva"],
     link: "https://agavepaint.com/",
     image: agave_logo,

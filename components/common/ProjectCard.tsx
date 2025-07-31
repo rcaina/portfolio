@@ -78,7 +78,7 @@ const ProjectCard: FC<{
               </div>
             )}
 
-            {project.link && (
+            {project.link && !project.title.includes("Portfolio") && (
               <QuickLink
                 data={{
                   href: project.link,
