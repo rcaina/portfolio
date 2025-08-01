@@ -99,7 +99,7 @@ const ProjectCard: FC<{
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700 dark:bg-gray-300 dark:text-gray-800"
               >
                 {tech}
               </span>
@@ -107,11 +107,9 @@ const ProjectCard: FC<{
           </div>
 
           {project.demo_account_info && (
-            <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-              <h4 className="mb-2 font-semibold text-gray-800 dark:text-white">
-                Demo Account
-              </h4>
-              <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+            <div className="rounded-lg p-4">
+              <h4 className="mb-2 font-semibold">Demo Account Credentials</h4>
+              <div className="space-y-1 text-sm">
                 <p>
                   <span className="font-medium">Email:</span>{" "}
                   {project.demo_account_info.email}
