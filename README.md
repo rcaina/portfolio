@@ -9,7 +9,6 @@ A modern, responsive personal portfolio website built with Next.js, TypeScript, 
 - **Interactive Components**: Animated sections and smooth scrolling
 - **Performance Optimized**: Fast loading with Next.js optimizations
 - **SEO Friendly**: Proper meta tags and structured content
-- **Accessibility**: WCAG compliant with proper ARIA labels
 
 ## 📋 Sections
 
@@ -71,15 +70,12 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run test` - Run Jest tests
 - `npm run format` - Format code with Prettier
 - `npm run format:write` - Format and write changes
 
 ## 🌐 Deployment
 
 This portfolio is deployed on **Vercel** for optimal performance and reliability.
-
-**Live Site**: [Your Portfolio URL]
 
 ## 📁 Project Structure
 
