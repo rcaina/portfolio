@@ -12,6 +12,7 @@ interface Experience {
   description: string[];
   technologies?: string[];
   color?: string;
+  backgroundColor?: string;
 }
 
 const ExperienceCard: React.FC<{
@@ -41,7 +42,14 @@ const ExperienceCard: React.FC<{
               width={200}
               height={200}
               className={`rounded-xl border`}
-              style={experience.color ? { borderColor: experience.color } : {}}
+              style={
+                experience.color
+                  ? {
+                      borderColor: experience.color,
+                      backgroundColor: experience.backgroundColor,
+                    }
+                  : {}
+              }
             />
           </div>
         </div>
