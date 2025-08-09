@@ -42,7 +42,10 @@ export const EXPERIENCES = [
     image: corecast_logo,
     landingPage: "https://www.corecastre.com/",
     portal: "",
-    description: [],
+    description: [
+      "Collaborated with the UX designer to enhance the application’s UI and prepare for alpha testing, incorporating early feedback to refine the user experience.",
+      "Worked with the development team to connect the front-end UI to backend RESTful API endpoints and implemented new features using AG Grid to provide an Excel-like interface.",
+    ],
     technologies: [
       "pnpm",
       "Next.js",
