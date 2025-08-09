@@ -11,6 +11,7 @@ import name_logo from "@/public/images/name_logo.png";
 import ronin_logo from "@/public/images/ronin_logo.jpg";
 import agave_logo from "@/public/images/agave_logo.png";
 import union_logo from "@/public/images/unioncp_logo.jpg";
+import corecast_logo from "@/public/images/corecast_logo.png";
 
 export const NAME = "Renzo Caiña";
 export const JOB_TITLE = "Full Stack Software Developer";
@@ -34,6 +35,33 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const EXPERIENCES = [
+  {
+    company: "CoreCast",
+    title: "Full Stack Software Engineer",
+    date: "May 2025 - Present",
+    image: corecast_logo,
+    landingPage: "https://www.corecastre.com/",
+    portal: "",
+    description: [],
+    technologies: [
+      "pnpm",
+      "Next.js",
+      "TailwindCSS",
+      "TypeScript",
+      "React",
+      "Drizzle",
+      "PostgreSQL",
+      "Neon",
+      "Clerk",
+      "Tanstack",
+      "AG-GRID",
+      "Fly.io",
+    ],
+    //white on light mode, black on dark mode
+    color: "#ffffff",
+    backgroundColor: "#ffffff",
+    subsidiaries: [],
+  },
   {
     company: "Renew Biotechnologies",
     title: "Full Stack Software Developer",
