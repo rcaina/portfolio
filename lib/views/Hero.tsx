@@ -41,7 +41,7 @@ const Hero = () => {
           <button
             onClick={() =>
               window.open(
-                "https://rcaina.github.io/portfolio/files/renzo_caina_resume.pdf",
+                "https://rcaina.github.io/portfolio/files/renzocaina_resume.pdf",
                 "_blank",
                 "noopener,noreferrer"
               )
