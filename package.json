@@ -81,8 +81,8 @@
     "initVersion": "7.26.0"
   },
   "engines": {
-    "npm": ">=9.0.0 <11.0.0",
-    "node": ">=22.0.0 <23.0.0"
+    "npm": ">=9.0.0 <12.0.0",
+    "node": ">=18.0.0 <25.0.0"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
