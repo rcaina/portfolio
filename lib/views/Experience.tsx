@@ -1,12 +1,20 @@
 import ExperienceCard from "@/components/common/ExperienceCard";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { EXPERIENCES } from "@/lib/contants";
 import { useState } from "react";
 
 const Experience = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [openAccordions, setOpenAccordions] = useState<Set<number>>(
+    new Set([0])
+  );
 
-  const toggleAccordion = (toggle: boolean) => {
-    setIsOpen(toggle === true ? true : false);
+  const toggleAccordion = (index: number) => {
+    setOpenAccordions((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
   };
 
   return (
@@ -26,26 +34,41 @@ const Experience = () => {
               imagePosition={index % 2 ? "left" : "right"}
             />
             {experience.subsidiaries?.length > 0 && (
-              <div className="mb-8 flex justify-center">
+              <div className="mb-4 mt-4 overflow-hidden rounded-lg border border-gray-200">
                 <button
-                  onClick={() => toggleAccordion(!isOpen)}
-                  className="m-8 hover:text-secondary-600"
+                  onClick={() => toggleAccordion(index)}
+                  className="flex w-full items-center justify-center gap-2 px-6 py-4 text-left font-medium transition-colors hover:bg-gray-100 hover:text-secondary-600"
+                  aria-expanded={openAccordions.has(index)}
                 >
-                  {isOpen ? "Hide Subsidiaries" : "Show Subsidiaries"}
+                  {openAccordions.has(index) ? (
+                    <>
+                      <ChevronUpIcon className="h-5 w-5 shrink-0" />
+                      Hide Subsidiaries ({experience.subsidiaries?.length})
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDownIcon className="h-5 w-5 shrink-0" />
+                      Show Subsidiaries ({experience.subsidiaries?.length})
+                    </>
+                  )}
                 </button>
+                {openAccordions.has(index) && (
+                  <div className="border-t border-gray-200 px-4 pb-4 pt-2">
+                    {experience.subsidiaries?.map((sub, subIndex) => (
+                      <div
+                        key={subIndex}
+                        className="mb-4 rounded-lg bg-white py-4 pl-5 pr-5 last:mb-0"
+                      >
+                        <ExperienceCard
+                          experience={sub}
+                          imagePosition={subIndex % 2 ? "left" : "right"}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
-            {experience.subsidiaries?.length > 0 &&
-              isOpen &&
-              experience.subsidiaries.map((sub, index) => (
-                <div key={index} className="pl-5 pr-5">
-                  <ExperienceCard
-                    key={index}
-                    experience={sub}
-                    imagePosition={index % 2 ? "left" : "right"}
-                  />
-                </div>
-              ))}
             {index !== EXPERIENCES.length - 1 && (
               <hr className="w-full border-foreground" />
             )}

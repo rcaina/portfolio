@@ -1,0 +1,10 @@
+
+✔ Backed up original state in git stash (368e856)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[main 4220076] update portfolio with latest resume and some styling adjustments
+ 10 files changed, 3072 insertions(+), 5682 deletions(-)
+ create mode 100644 public/files/renzo_caina.pdf
+ delete mode 100644 public/files/renzocaina_resume.pdf
+g%                                                                                                                                                                   tments'
