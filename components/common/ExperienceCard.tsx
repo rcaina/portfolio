@@ -6,6 +6,7 @@ interface Experience {
   title: string;
   company: string;
   date: string;
+  location?: string;
   image: StaticImageData;
   landingPage: string;
   portal: string;
@@ -55,23 +56,34 @@ const ExperienceCard: React.FC<{
         </div>
 
         <div className="w-full space-y-4 text-left md:w-1/2">
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
-            {experience.title}
-          </h3>
-          <QuickLink
-            data={{
-              href: `${experience.landingPage}`,
-              label: `${experience.company}`,
-            }}
-          />
-          <p className="text-gray-500 dark:text-gray-400">{experience.date}</p>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+              {experience.title}
+            </h3>
+            {experience.location && (
+              <p className="shrink-0 text-gray-500 dark:text-gray-400">
+                {experience.location}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <QuickLink
+              data={{
+                href: `${experience.landingPage}`,
+                label: `${experience.company}`,
+              }}
+            />
+            <p className="shrink-0 text-gray-500 dark:text-gray-400">
+              {experience.date}
+            </p>
+          </div>
           <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300">
             {experience.description.map((bulletPoint) => (
               <li key={bulletPoint}>{bulletPoint}</li>
             ))}
           </ul>
           {experience.technologies && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 pb-4">
               {experience.technologies.map((tech) => (
                 <span
                   key={tech}
@@ -83,13 +95,15 @@ const ExperienceCard: React.FC<{
             </div>
           )}
           {experience?.portal && (
-            <QuickLink
-              data={{
-                href: `${experience.portal}`,
-                label: "Go to testing portal",
-                showIcon: true,
-              }}
-            />
+            <div className="pb-4">
+              <QuickLink
+                data={{
+                  href: `${experience.portal}`,
+                  label: "Go to testing portal",
+                  showIcon: true,
+                }}
+              />
+            </div>
           )}
         </div>
       </div>
