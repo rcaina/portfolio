@@ -126,7 +126,7 @@ export const EXPERIENCES = [
     location: "Provo, UT",
     image: fiddle_logo,
     landingPage: "https://fiddle.io/",
-    portal: "https://dev.fiddle.io/app/",
+    portal: "",
     description: [
       "Develop new features and improve current UI and backend functionality by communicating with clients.",
       "Analyze source code, locate and fix bugs throughout the app through testing and deliver a fixed solution.",
@@ -161,7 +161,7 @@ export const EXPERIENCES = [
     location: "Provo, UT",
     image: fiddle_logo,
     landingPage: "https://fiddle.io/",
-    portal: "https://dev.fiddle.io/app/",
+    portal: "",
     description: [
       "Develop and maintain a new Fiddle app page and features backend using javascript on Nodejs.",
       "Map backend request for login, sign up and other page data from MongoDB using graphQL.",
