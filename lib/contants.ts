@@ -111,6 +111,7 @@ export const EXPERIENCES = [
       "GitHub",
       "Github Actions",
       "Docker",
+      "Clerk",
     ],
     color: "",
     subsidiaries: [
