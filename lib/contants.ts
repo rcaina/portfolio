@@ -44,9 +44,10 @@ export const EXPERIENCES = [
     landingPage: "https://www.corecastre.com/",
     portal: "",
     description: [
-      "Built and refined frontend features using React, TypeScript, and Tailwind CSS, collaborating with UX design to deliver a polished UI and Excel-like data workflows.",
-      "Implemented backend REST API endpoints to power core application workflows, ensuring reliable data flow between frontend and backend services.",
-      "Integrated Stripe and Clerk, enabling secure authentication and payment workflows within the real estate management platform.",
+      "Built and integrated Stripe-based subscription infrastructure supporting organization-level billing, plan tiers, and automated lifecycle management (signup, upgrade, downgrade, cancellation).",
+      "Implemented secure authentication and multi-tenant organization management using Clerk, enabling role-based access and seamless onboarding across teams.",
+      "Developed core application features across a Next.js and Node.js stack, improving platform functionality and reliability for users and internal teams.",
+      "Optimized the local development environment and routing performance, significantly improving page load and navigation speed to accelerate testing and developer workflow.",
     ],
     technologies: [
       "TypeScript",
@@ -59,7 +60,7 @@ export const EXPERIENCES = [
       "Stripe",
       "Tanstack",
       "AG-GRID",
-      "Jira",
+      "JIRA",
       "Neon",
       "Fly.io",
       "pnpm",

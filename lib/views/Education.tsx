@@ -5,7 +5,10 @@ import { MAJOR, MINOR } from "@/lib/contants";
 
 const Education = () => {
   return (
-    <div className="flex w-full flex-col items-center gap-8 text-center">
+    <div
+      id="education"
+      className="flex w-full scroll-mt-20 flex-col items-center gap-8 text-center"
+    >
       <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <div className="flex w-full items-center justify-center gap-4">
           <hr className="w-full border-secondary-500" />

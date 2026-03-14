@@ -18,7 +18,7 @@ const Experience = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8">
+    <div id="experience" className="flex scroll-mt-20 flex-col gap-8">
       <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <div className="flex w-full items-center justify-center gap-4">
           <hr className="w-full border-secondary-500" />
