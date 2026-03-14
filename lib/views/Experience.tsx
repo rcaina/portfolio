@@ -5,7 +5,12 @@ import { useState } from "react";
 
 const Experience = () => {
   const [openAccordions, setOpenAccordions] = useState<Set<number>>(
-    new Set([0])
+    () =>
+      new Set(
+        EXPERIENCES.map((exp, i) => i).filter(
+          (i) => (EXPERIENCES[i].subsidiaries?.length ?? 0) > 0
+        )
+      )
   );
 
   const toggleAccordion = (index: number) => {
@@ -34,10 +39,10 @@ const Experience = () => {
               imagePosition={index % 2 ? "left" : "right"}
             />
             {experience.subsidiaries?.length > 0 && (
-              <div className="mb-4 mt-4 overflow-hidden rounded-lg border border-gray-200">
+              <div className="mb-4 mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-100/90 dark:border-gray-600 dark:bg-white/[0.06]">
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="flex w-full items-center justify-center gap-2 px-6 py-4 text-left font-medium transition-colors hover:bg-gray-100 hover:text-secondary-600"
+                  className="flex w-full items-center justify-center gap-2 px-6 py-4 text-left font-medium transition-colors hover:bg-gray-100 hover:text-secondary-600 dark:hover:bg-white/[0.09] dark:hover:text-secondary-400"
                   aria-expanded={openAccordions.has(index)}
                 >
                   {openAccordions.has(index) ? (
@@ -53,11 +58,11 @@ const Experience = () => {
                   )}
                 </button>
                 {openAccordions.has(index) && (
-                  <div className="border-t border-gray-200 px-4 pb-4 pt-2">
+                  <div className="border-t border-gray-200 px-4 pb-4 pt-2 dark:border-gray-600">
                     {experience.subsidiaries?.map((sub, subIndex) => (
                       <div
                         key={subIndex}
-                        className="mb-4 rounded-lg bg-white py-4 pl-5 pr-5 last:mb-0"
+                        className="mb-4 py-4 pl-5 pr-5 last:mb-0"
                       >
                         <ExperienceCard
                           experience={sub}
