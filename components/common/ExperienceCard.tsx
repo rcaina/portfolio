@@ -87,7 +87,7 @@ const ExperienceCard: React.FC<{
               {experience.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                  className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700 dark:bg-gray-300 dark:text-gray-800"
                 >
                   {tech}
                 </span>
