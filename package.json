@@ -10,7 +10,7 @@
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "start": "next start -p 8080",
     "lint-staged": "lint-staged",
-    "lint": "npx eslint --ext .js,.ts,.tsx .",
+    "lint": "pnpm exec eslint --ext .js,.ts,.tsx .",
     "test": "jest",
     "lint:write": "next lint --cache",
     "prepare": "husky install",
@@ -70,19 +70,20 @@
   },
   "lint-staged": {
     "**/*.(ts|tsx|js)": [
-      "npm run lint",
-      "npm run prettier --write"
+      "pnpm run lint",
+      "pnpm run prettier --write"
     ],
     "**/*.(md|json)": [
-      "npm run prettier --write"
+      "pnpm run prettier --write"
     ]
   },
   "ct3aMetadata": {
     "initVersion": "7.26.0"
   },
+  "packageManager": "pnpm@9.15.0",
   "engines": {
-    "npm": ">=9.0.0 <12.0.0",
-    "node": ">=18.0.0 <25.0.0"
+    "node": ">=18.0.0 <25.0.0",
+    "pnpm": ">=9.0.0"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -90,9 +91,10 @@
   "volta": {
     "node": "22.11.0"
   },
-  "overrides": {
-    "glob": "^10.5.0",
-    "js-yaml": ">=3.14.2",
-    "qs": ">=6.14.1"
+  "pnpm": {
+    "overrides": {
+      "glob": ">=10.5.0",
+      "minimatch": ">=10.2.1"
+    }
   }
 }
