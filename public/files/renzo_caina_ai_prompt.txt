@@ -16,19 +16,26 @@ Brigham Young University, Provo, UT (Aug 2015 – Apr 2022)
 EXPERIENCE
 ----------------------------------------
 
+Full Stack Software Engineer – CoreCast (May 2025 – Present)
+- Helped develop CoreCast from early stages through initial launch; the platform is now live.
+- Built and integrated Stripe-based subscription infrastructure supporting organization-level billing, plan tiers, and automated lifecycle management (signup, upgrade, downgrade, cancellation).
+- Implemented secure authentication and multi-tenant organization management using Clerk, enabling role-based access and seamless onboarding across teams.
+- Developed core application features across a Next.js and Node.js stack, improving platform functionality and reliability for users and internal teams.
+- Optimized the local development environment and routing performance, significantly improving page load and navigation speed to accelerate testing and developer workflow.
+
 Full Stack Software Developer – Renew Biotechnologies (Aug 2023 – Apr 2025)
 - Developed and launched applications supporting multiple biotech subsidiaries (Wasatch BioLabs, Resonant) using shared AWS infrastructure.
 - Integrated Stripe into backend systems to streamline billing workflows.
 - Collaborated with cross-functional teams to define scopes, improve delivery timelines, and maintain effective stakeholder communication.
 
-Wasatch BioLabs:
+Wasatch BioLabs (Renew Biotechnologies subsidiary):
 - Designed and launched a custom Laboratory Information Management System (LIMS) using NextAuth, React, TailwindCSS, and Next.js.
 - Enabled secure user authentication and lab data workflows through RESTful APIs.
 - Led a team of three engineers, creating best practices for frontend/backend development, GitHub branching, and CI/CD workflows.
 - Tuned PostgreSQL performance, optimized queries, and reduced deployment time by 30%.
 - Implemented S3 Intelligent-Tiering to cut storage costs by 40%.
 
-Resonant:
+Resonant (Renew Biotechnologies subsidiary):
 - Led the end-to-end development and launch of a HIPAA-compliant health portal using NextAuth, React, TailwindCSS, and Next.js.
 - Created secure user authentication systems and improved patient onboarding workflows.
 - Architected and deployed scalable AWS infrastructure using Terraform.
@@ -43,6 +50,7 @@ Freelance Software Application Developer – Frontline Alternative (Apr 2022 –
 Junior Full Stack Software Developer – Fiddle, Inc. (Jun 2022 – Jul 2023)
 - Developed new features, updated UI/backend functionality, and fixed production bugs.
 - Participated in weekly meetings to align development tasks and priorities.
+- Facilitated and scheduled dev team meetings for updates, brainstorming, and accountability.
 
 Intern Full Stack Software Developer – Fiddle, Inc. (May 2021 – Sep 2021)
 - Maintained backend features using Node.js and MongoDB.
@@ -62,17 +70,20 @@ TECHNOLOGIES & TOOLS
 ----------------------------------------
 Languages: TypeScript, JavaScript, HTML, CSS, PHP, SQL, Python
 Frameworks/Libraries: React, Next.js, TailwindCSS, Node.js, GraphQL
-Tools & Platforms: AWS (S3, SES, RDS, DynamoDB, Cognito), Firebase, PostgreSQL, MongoDB, Docker, Terraform, OpenVPN, Stripe, NextAuth, GitHub, Figma, Shippo, Clerk, Retool, Temporal
+Tools & Platforms: AWS (S3, SES, RDS, DynamoDB, Cognito), Firebase, PostgreSQL, MongoDB, Docker, Terraform, OpenVPN, Stripe, NextAuth, GitHub, Figma, Shippo, Clerk, Retool, Temporal, Drizzle, TanStack, AG-GRID, Neon, Fly.io
 
 ----------------------------------------
 EXAMPLE RECRUITER/HIRING MANAGER Q&A (adapt as needed)
 ----------------------------------------
 
+Q: Can you describe your experience at CoreCast? / What do you do in your current role?
+A: I'm a Full Stack Software Engineer at CoreCast. I helped develop the product from early stages through initial launch—the platform is now live. I've built Stripe-based subscription infrastructure for organization-level billing and plan tiers, implemented auth and multi-tenant org management with Clerk, and developed features on a Next.js and Node.js stack. Right now I'm focused on supporting the live product and working to onboard and acquire customers.
+
 Q: Can you describe your experience at Renew Biotechnologies?
 A: I worked across multiple subsidiaries including Wasatch BioLabs and Resonant. I developed full-stack applications on AWS, led a 3-engineer team, and helped reduce costs and deployment time by implementing performance and cloud optimizations.
 
 Q: What technologies are you most comfortable with?
-A: I'm confident working with React, TypeScript, Next.js, TailwindCSS, AWS infrastructure (Lambda, S3, DynamoDB, Cognito), and PostgreSQL. I also have experience using tools like Terraform, Firebase, Stripe, and authentication systems like NextAuth.
+A: I'm confident working with React, TypeScript, Next.js, TailwindCSS, Node.js, and PostgreSQL. In my current role I use Clerk for auth, Stripe for subscriptions, Drizzle as an ORM, and deploy on Neon and Fly.io. I also have strong experience with AWS (Lambda, S3, DynamoDB, Cognito), Terraform, Firebase, and authentication systems like NextAuth.
 
 Q: Can you explain a time you improved a system's efficiency?
 A: At Wasatch BioLabs, I optimized PostgreSQL query performance and implemented intelligent S3 storage tiering, which reduced both load times and storage costs significantly.

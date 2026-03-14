@@ -5,7 +5,10 @@ import SocialCard from "@/components/common/SocialCard";
 
 const Hero = () => {
   return (
-    <div className="flex w-full max-w-5xl flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:items-center sm:gap-8">
+    <div
+      id="hero"
+      className="flex w-full max-w-5xl scroll-mt-20 flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:items-center sm:gap-8"
+    >
       <Image
         src={profile}
         alt="Profile picture"

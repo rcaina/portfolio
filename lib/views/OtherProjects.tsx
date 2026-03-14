@@ -3,7 +3,10 @@ import { WEBFLOW_PROJECTS } from "@/lib/contants";
 
 const OtherProjects = () => {
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div
+      id="other-projects"
+      className="flex w-full scroll-mt-20 flex-col gap-8"
+    >
       <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <div className="flex w-full items-center justify-center gap-4">
           <hr className="w-full border-secondary-500" />
