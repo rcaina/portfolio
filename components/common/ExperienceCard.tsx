@@ -99,7 +99,7 @@ const ExperienceCard: React.FC<{
               <QuickLink
                 data={{
                   href: `${experience.portal}`,
-                  label: "Go to testing portal",
+                  label: "Testing Portal",
                   showIcon: true,
                 }}
               />
