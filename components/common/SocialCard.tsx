@@ -10,13 +10,13 @@ const SocialCard = ({ socialLink }: Props) => {
     <Link
       href={socialLink.link}
       target="_blank"
-      className="flex w-full flex-col items-center gap-4 rounded-xl shadow-xl hover:shadow-secondary-500"
+      className="flex w-full flex-col items-center gap-4 rounded-full shadow-xl hover:shadow-secondary-500"
     >
       <div className="flex w-full items-center justify-center gap-4">
         <Image
           src={socialLink.img}
           alt="Profile picture"
-          className={`h-[40px] w-[45px] rounded-xl bg-white object-cover md:h-[65px] md:w-[65px] ${
+          className={`h-[44px] w-[44px] rounded-full bg-white object-cover md:h-[50px] md:w-[50px] ${
             socialLink.color ? `border border-${socialLink.color}` : ""
           }`}
           priority

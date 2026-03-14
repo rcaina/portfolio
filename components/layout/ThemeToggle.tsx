@@ -20,7 +20,7 @@ export default function ThemeToggle() {
         )}
       </button>
       <span className="whitespace-nowrap pl-4 pr-3 text-sm font-medium text-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-        {isDark ? "Light mode" : "Dark mode"}
+        {isDark ? "Light Mode" : "Dark Mode"}
       </span>
     </div>
   );

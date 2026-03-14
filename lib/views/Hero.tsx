@@ -49,7 +49,7 @@ const Hero = () => {
                 "noopener,noreferrer"
               )
             }
-            className="rounded-xl border border-foreground p-3 text-sm shadow-lg hover:shadow-secondary-500 md:text-base"
+            className="rounded-full border border-foreground/20 bg-background/90 px-5 py-3 text-sm shadow-xl backdrop-blur-sm transition-colors hover:border-foreground/40 hover:shadow-secondary-500 md:text-base"
           >
             View Resume
           </button>

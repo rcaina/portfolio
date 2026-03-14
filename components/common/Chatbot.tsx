@@ -26,8 +26,8 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="mx-auto max-w-md space-y-4 rounded-lg border p-4">
-      <div className="h-64 space-y-2 overflow-y-auto rounded bg-background p-2">
+    <div className="mx-auto max-w-md space-y-4 rounded-b-xl border-0 p-4 pt-2">
+      <div className="h-64 space-y-2 overflow-y-auto rounded-lg bg-muted/30 p-2">
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -36,28 +36,32 @@ export default function Chatbot() {
             } mb-2`}
           >
             <div
-              className={`max-w-[75%] whitespace-pre-wrap break-words rounded-lg p-3 text-sm ${
+              className={`max-w-[75%] whitespace-pre-wrap break-words rounded-2xl p-3 text-sm ${
                 msg.role === "user"
-                  ? "bg-blue-600 text-right text-white"
-                  : "bg-gray-300 text-left text-black"
+                  ? "bg-secondary-500 text-right text-white"
+                  : "bg-muted text-left text-foreground"
               }`}
             >
               {msg.content}
             </div>
           </div>
         ))}
-        {loading && <div className="italic text-gray-500">Typing...</div>}
+        {loading && (
+          <div className="italic text-muted-foreground">Typing...</div>
+        )}
       </div>
       <div className="flex gap-2">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-1 rounded border bg-background p-2"
-          placeholder="Ask me anything..."
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          className="flex-1 rounded-full border border-foreground/20 bg-background px-4 py-2.5 text-sm transition-colors placeholder:text-muted-foreground focus:border-secondary-500 focus:outline-none focus:ring-2 focus:ring-secondary-500/20"
+          placeholder="Ask about my work..."
         />
         <button
+          type="button"
           onClick={sendMessage}
-          className="rounded bg-secondary-600 px-4 text-white"
+          className="rounded-full bg-secondary-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 focus:ring-offset-background dark:text-secondary-50"
         >
           Send
         </button>

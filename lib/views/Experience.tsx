@@ -78,7 +78,7 @@ const Experience = () => {
               </div>
             )}
             {index !== EXPERIENCES.length - 1 && (
-              <hr className="w-full border-foreground" />
+              <hr className="mt-6 w-full border-foreground" />
             )}
           </div>
         ))}
