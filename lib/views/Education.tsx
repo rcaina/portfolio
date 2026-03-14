@@ -7,7 +7,7 @@ const Education = () => {
   return (
     <div
       id="education"
-      className="flex w-full scroll-mt-20 flex-col items-center gap-8 text-center"
+      className="flex w-full scroll-mt-12 flex-col items-center gap-8 text-center md:scroll-mt-14"
     >
       <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <div className="flex w-full items-center justify-center gap-4">

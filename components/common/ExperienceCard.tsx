@@ -83,7 +83,7 @@ const ExperienceCard: React.FC<{
             ))}
           </ul>
           {experience.technologies && (
-            <div className="flex flex-wrap gap-2 pb-4">
+            <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech) => (
                 <span
                   key={tech}
@@ -95,7 +95,7 @@ const ExperienceCard: React.FC<{
             </div>
           )}
           {experience?.portal && (
-            <div className="pb-4">
+            <div>
               <QuickLink
                 data={{
                   href: `${experience.portal}`,

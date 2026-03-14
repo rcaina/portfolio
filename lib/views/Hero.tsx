@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div
       id="hero"
-      className="flex w-full max-w-5xl scroll-mt-20 flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:items-center sm:gap-8"
+      className="flex w-full max-w-5xl scroll-mt-12 flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:items-center sm:gap-8 md:scroll-mt-14"
     >
       <Image
         src={profile}
