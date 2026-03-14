@@ -5,7 +5,7 @@ const OtherProjects = () => {
   return (
     <div
       id="other-projects"
-      className="flex w-full scroll-mt-20 flex-col gap-8"
+      className="flex w-full scroll-mt-12 flex-col gap-8 md:scroll-mt-14"
     >
       <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <div className="flex w-full items-center justify-center gap-4">
