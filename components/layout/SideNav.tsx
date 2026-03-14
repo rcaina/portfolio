@@ -65,25 +65,29 @@ export default function SideNav() {
           }`}
           aria-label="Close menu"
         />
+        <button
+          type="button"
+          onClick={() => setMobileOpen(false)}
+          className={`fixed right-4 top-4 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-foreground/20 bg-background/90 text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 hover:border-foreground/40 hover:bg-secondary-500/50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 focus:ring-offset-background ${
+            mobileOpen
+              ? "visible opacity-100"
+              : "pointer-events-none invisible opacity-0"
+          }`}
+          aria-label="Close menu"
+        >
+          <XMarkIcon className="h-5 w-5" aria-hidden />
+        </button>
         <div
           className={`absolute right-4 top-1/2 z-10 flex -translate-y-1/2 flex-col gap-3 transition-transform duration-200 ease-out ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <button
-            type="button"
-            onClick={() => setMobileOpen(false)}
-            className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-foreground/20 bg-background/90 text-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-secondary-500/50 focus:outline-none focus:ring-2 focus:ring-secondary-500"
-            aria-label="Close menu"
-          >
-            <XMarkIcon className="h-5 w-5" aria-hidden />
-          </button>
           {SECTIONS.map(({ id, label, icon: Icon }) => (
             <div
               key={id}
-              className="group flex h-12 w-12 flex-row items-center justify-end overflow-hidden rounded-full border border-foreground/20 bg-background/90 shadow-sm backdrop-blur-sm transition-[width] duration-300 ease-out focus-within:w-[11rem] focus-within:border-foreground/40 hover:w-[11rem] hover:border-foreground/40 hover:shadow-md"
+              className="group flex h-12 w-[11rem] flex-row items-center justify-between overflow-hidden rounded-full border border-foreground/20 bg-background/90 shadow-sm backdrop-blur-sm"
             >
-              <span className="whitespace-nowrap pl-3 pr-4 text-sm font-medium text-foreground opacity-0 transition-opacity duration-200 group-focus-within:opacity-100 group-hover:opacity-100">
+              <span className="whitespace-nowrap pl-4 pr-3 text-left text-sm font-medium text-foreground opacity-100">
                 {label}
               </span>
               <button

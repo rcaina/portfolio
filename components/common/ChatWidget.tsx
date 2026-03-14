@@ -24,15 +24,17 @@ export default function ChatWidget() {
 
       {open && (
         <div className="fixed bottom-20 right-4 z-50 max-h-[70vh] w-80 rounded-xl border border-foreground/20 bg-background shadow-lg md:right-6">
-          <div className="flex items-center justify-between rounded-t-xl border-b border-foreground bg-background  p-2">
-            <span className="font-semibold text-secondary-500">
-              {"Renzo AI"}
+          <div className="flex items-center justify-between rounded-t-xl border-b border-foreground/20 bg-background px-3 py-2.5">
+            <span className="font-semibold text-secondary-600 dark:text-secondary-400">
+              Ask About My Work
             </span>
             <button
+              type="button"
               onClick={() => setOpen(false)}
-              className="text-gray-400 hover:text-red-600"
+              className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-secondary-500"
+              aria-label="Close chat"
             >
-              ✖
+              ✕
             </button>
           </div>
           <Chatbot />
