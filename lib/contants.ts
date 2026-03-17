@@ -360,7 +360,7 @@ export const WEBFLOW_PROJECTS = [
   {
     title: "Union Capital Ventures",
     description:
-      "A landing page website using Webflow for Union Capital Ventures, a venture capital firm that invests in early-stage startups.",
+      "Multi-page marketing site for an investment firm, rebuilt in Webflow from a full Figma design, including layouts, imagery, navigation, and responsive behavior.",
     technologies: ["Webflow", "Figma"],
     link: "https://www.unioncp.com/",
     image: union_logo,
@@ -369,7 +369,7 @@ export const WEBFLOW_PROJECTS = [
   {
     title: "Agave Paint & Epoxy",
     description:
-      "A landing page website using Webflow for a paint and epoxy company.",
+      "Simple marketing site for a small painting and epoxy business, with pages showcasing services, gallery images of completed work, and mobile-friendly layouts.",
     technologies: ["Webflow", "Canva"],
     image: agave_logo,
   },
