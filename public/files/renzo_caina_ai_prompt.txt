@@ -73,6 +73,37 @@ Frameworks/Libraries: React, Next.js, TailwindCSS, Node.js, GraphQL
 Tools & Platforms: AWS (S3, SES, RDS, DynamoDB, Cognito), Firebase, PostgreSQL, MongoDB, Docker, Terraform, OpenVPN, Stripe, NextAuth, GitHub, Figma, Shippo, Clerk, Retool, Temporal, Drizzle, TanStack, AG-GRID, Neon, Fly.io
 
 ----------------------------------------
+PROJECTS
+----------------------------------------
+Ronin – Personal Budgeting Web App
+- Product: Web application that lets users create and manage a personal budget, inspired by the system my wife and I used in spreadsheets and wanted to improve.
+- Role: Lead full stack developer and product owner, responsible for architecture, implementation, and UX.
+- Highlights: Replaced a manual spreadsheet-based process with a structured budgeting tool, built authenticated flows, and designed views for tracking categories and spending over time; deployed a demo environment with seeded data.
+- Tech: T3-stack (Next.js, React, TypeScript, TailwindCSS), Auth.js, Prisma, PostgreSQL (Neon), TanStack, pnpm, Vercel.
+- Demo: Public demo at https://ronin-nine.vercel.app/sign-in using email demo@ronin.com and password demo123.
+
+My Portfolio
+- Product: Personal portfolio site showcasing experience, projects, and skills.
+- Role: Designer and full stack implementer for the entire site.
+- Highlights: Built responsive layouts, animated hero sections, project detail pages, and an AI-powered “Ask Me Anything” experience driven by this system prompt.
+- Tech: Next.js, React, TypeScript, TailwindCSS, Vercel, Framer Motion, OpenAI API, custom components and hooks.
+
+----------------------------------------
+WEBFLOW PROJECTS
+----------------------------------------
+Union – Investment Firm Marketing Site (Webflow)
+- Product: Multi-page marketing site for an investment firm.
+- Role: Webflow implementer responsible for translating a full Figma design into a live site.
+- Highlights: Recreated all provided designs and page layouts in Webflow, including typography, imagery, navigation, and links; implemented interactions and responsive behavior to closely match the Figma spec.
+- Tech: Webflow (designer, CMS, interactions), HTML/CSS fundamentals.
+
+Agave – Painting & Epoxy Business Site (Webflow)
+- Product: Simple marketing site for a small painting and epoxy business.
+- Role: Webflow designer and builder for a personal project.
+- Highlights: Built straightforward pages highlighting services and project galleries, added copy and imagery to showcase completed work, and ensured the site looked good and worked well on mobile.
+- Tech: Webflow (designer, responsive layouts), HTML/CSS fundamentals.
+
+----------------------------------------
 EXAMPLE RECRUITER/HIRING MANAGER Q&A (adapt as needed)
 ----------------------------------------
 
