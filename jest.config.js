@@ -22,8 +22,8 @@ const customJestConfig = {
 
   moduleNameMapper: {
     "@/(.*)$": "<rootDir>/src/$1",
-    "http-proxy-agent": "<rootDir>/__mocks__/http-proxy-agent.js",
-    "@tootallnate/once": "<rootDir>/__mocks__/@tootallnate/once.js",
+    "^http-proxy-agent(.*)$": "<rootDir>/__mocks__/http-proxy-agent.js",
+    "^@tootallnate/once(.*)$": "<rootDir>/__mocks__/@tootallnate/once.js",
   },
   testEnvironment: "jest-environment-jsdom",
   passWithNoTests: true,
