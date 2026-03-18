@@ -22,9 +22,12 @@ const customJestConfig = {
 
   moduleNameMapper: {
     "@/(.*)$": "<rootDir>/src/$1",
+    "^http-proxy-agent(.*)$": "<rootDir>/__mocks__/http-proxy-agent.js",
+    "^@tootallnate/once(.*)$": "<rootDir>/__mocks__/@tootallnate/once.js",
   },
   testEnvironment: "jest-environment-jsdom",
   passWithNoTests: true,
+  modulePathIgnorePatterns: ["<rootDir>/.next/"],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

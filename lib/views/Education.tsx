@@ -1,6 +1,5 @@
 import Image from "next/image";
 import byulogo from "@/public/images/byulogo.png";
-import csBuilding from "@/public/images/csbuilding.jpg";
 import { MAJOR, MINOR } from "@/lib/contants";
 
 const Education = () => {
@@ -35,14 +34,6 @@ const Education = () => {
         <p className="text-lg text-secondary-500">August 2015 – April 2022</p>
         <p className="text-md italic text-white/70">{MINOR} (2015–2019)</p>
       </div>
-
-      <Image
-        src={csBuilding}
-        alt="CS Building"
-        className="rounded-lg bg-foreground"
-        width={300}
-        height={300}
-      />
     </div>
   );
 };

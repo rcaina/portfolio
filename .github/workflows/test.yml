@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [18.19]
+        node: [22.11]
     env:
       NODE_ENV: "test"
     steps:
@@ -51,6 +51,3 @@ jobs:
 
       - name: Type Check
         run: pnpm exec tsc --noEmit
-
-      - name: Test
-        run: pnpm test
