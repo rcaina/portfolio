@@ -1,5 +1,3 @@
-import { Role } from "@prisma/client";
-
 export {};
 
 declare global {
@@ -11,7 +9,7 @@ declare global {
         onboarding: boolean;
       };
       unsafeMetadata: {
-        role: Role;
+        role: string;
       };
     };
   }
