@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [18.19]
+        node: [22.11]
     env:
       NODE_ENV: "test"
     steps:
