@@ -1,1 +1,1 @@
-npm run test
+pnpm run lint && pnpm exec -- tsc --noEmit
