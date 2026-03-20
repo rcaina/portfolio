@@ -10,7 +10,7 @@ A modern, responsive personal portfolio built with Next.js and TypeScript. It pr
 - **Route progress** — Top-of-page animated progress indicator on navigation (Framer Motion).
 - **AI assistant** — Floating “Ask About My Work” chat widget calling `/api/ai` (OpenAI). Graceful messaging when quotas or errors occur; toasts via React Toastify.
 - **PWA-oriented metadata** — Web app manifest and icon links in `_app`.
-- **Tooling** — ESLint, Prettier (with Tailwind class sorting), Husky + lint-staged, Jest (local), GitHub Actions CI (lint, build, typecheck).
+- **Tooling** — ESLint, Prettier (with Tailwind class sorting), Husky + lint-staged, GitHub Actions CI (lint, build, typecheck).
 
 ## Page sections
 
@@ -35,7 +35,7 @@ A modern, responsive personal portfolio built with Next.js and TypeScript. It pr
 
 ### Deployment
 
-The **Dockerfile** targets a **standalone** Next.js build (`output: "standalone"` in `next.config.js`). **`.github/workflows/nextjs.yml`** is set up for **GitHub Pages** and uploads `./out`; that path implies a [static export](https://nextjs.org/docs/app/guides/static-exports)–style build, which does not include API routes—so the OpenAI `/api/ai` route would need another hosting strategy if you rely on static Pages. **Vercel** (or the standalone Docker image) fits the full app, including API routes.
+The **Dockerfile** targets a **standalone** Next.js build (`output: "standalone"` in `next.config.js`). **`.github/workflows/ci.yml`** is set up for **GitHub Pages** and uploads `./out`; that path implies a [static export](https://nextjs.org/docs/app/guides/static-exports)–style build, which does not include API routes—so the OpenAI `/api/ai` route would need another hosting strategy if you rely on static Pages. **Vercel** (or the standalone Docker image) fits the full app, including API routes.
 
 ## Prerequisites
 
@@ -72,24 +72,22 @@ The **Dockerfile** targets a **standalone** Next.js build (`output: "standalone"
 
 ## Scripts
 
-| Command                               | Description                                           |
-| ------------------------------------- | ----------------------------------------------------- |
-| `pnpm dev`                            | Next.js dev server                                    |
-| `pnpm build`                          | Production build                                      |
-| `pnpm build:ci`                       | Production build (CI-oriented alias)                  |
-| `pnpm start`                          | Production server on **port 8080**                    |
-| `pnpm lint`                           | ESLint                                                |
-| `pnpm lint:write`                     | Next.js lint with cache                               |
-| `pnpm format`                         | Prettier check                                        |
-| `pnpm format:write` / `pnpm prettier` | Prettier write                                        |
-| `pnpm test`                           | Jest (not run in CI by default; see `jest.config.js`) |
+| Command                               | Description                          |
+| ------------------------------------- | ------------------------------------ |
+| `pnpm dev`                            | Next.js dev server                   |
+| `pnpm build`                          | Production build                     |
+| `pnpm build:ci`                       | Production build (CI-oriented alias) |
+| `pnpm start`                          | Production server on **port 8080**   |
+| `pnpm lint`                           | ESLint                               |
+| `pnpm lint:write`                     | Next.js lint with cache              |
+| `pnpm format`                         | Prettier check                       |
+| `pnpm format:write` / `pnpm prettier` | Prettier write                       |
 
 `prepare` runs Husky install for git hooks; `lint-staged` runs on staged files per `package.json`.
 
 ## CI and deployment
 
-- **`.github/workflows/test.yml`** — On pushes/PRs to `main`: install with pnpm, ESLint, production build (`build:ci`), and `tsc --noEmit`.
-- **`.github/workflows/nextjs.yml`** — Build and deploy to GitHub Pages. See **Deployment** (above) for how that compares to `output: "standalone"` and `/api/ai`.
+- **`.github/workflows/ci.yml`** — On pushes/PRs to `main`: install with pnpm, ESLint, production build (`build:ci`), and `tsc --noEmit`. On pushes to `main` (and manual **workflow_dispatch**), **Test** must pass before **Build for Pages** and **Deploy to GitHub Pages** run. Pull requests only run **Test** (no deploy).
 
 ## Project structure
 
@@ -109,8 +107,7 @@ portfolio/
 │   ├── _app.tsx         # Global providers, manifest, ChatWidget, Toaster
 │   └── 404.tsx
 ├── public/              # Static assets, icons, manifest, files (e.g. resume)
-├── styles/              # globals.css
-└── __mocks__/           # Jest mocks
+└── styles/              # globals.css
 ```
 
 ## Contributing
