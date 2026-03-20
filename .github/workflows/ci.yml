@@ -12,6 +12,12 @@ permissions:
   pages: write
   id-token: write
 
+# GitHub Actions' internal deprecation mitigation:
+# Force JavaScript Actions to run on Node.js 24 (avoids Node.js 20 deprecation warnings
+# from actions like configure-pages/deploy-pages that may still be built on Node 20).
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   test:
     name: Test
