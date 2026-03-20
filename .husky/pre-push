@@ -1,1 +1,1 @@
-npm run lint && npm exec -- tsc --noEmit
+pnpm run lint && pnpm exec -- tsc --noEmit
