@@ -11,7 +11,7 @@
     "start": "next start -p 8080",
     "lint-staged": "lint-staged",
     "lint": "pnpm exec eslint .",
-    "lint:write": "next lint --cache",
+    "lint:write": "pnpm exec eslint . --fix --cache",
     "prepare": "husky install",
     "prettier": "prettier --write ."
   },
