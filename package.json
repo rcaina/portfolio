@@ -70,9 +70,6 @@
     "node": ">=18.0.0 <25.0.0",
     "pnpm": ">=9.0.0"
   },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
   "volta": {
     "node": "22.11.0"
   },
@@ -81,7 +78,11 @@
       "flatted": ">=3.4.2",
       "glob": ">=10.5.0",
       "minimatch": ">=10.2.3",
-      "@tootallnate/once": ">=3.0.1"
+      "@tootallnate/once": ">=3.0.1",
+      "picomatch@2.3.1": "2.3.2",
+      "picomatch@4.0.3": "4.0.4",
+      "yaml@1.10.2": "1.10.3",
+      "yaml@2.8.2": "2.8.3"
     }
   }
 }
