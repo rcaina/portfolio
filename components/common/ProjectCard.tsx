@@ -1,9 +1,9 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
-import QuickLink from "./QuickLink";
-import { FC } from "react";
+import Image, { type StaticImageData } from "next/image";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState } from "react";
+import { LinkChip, TechChip } from "./Chip";
 
 interface Project {
   title: string;
@@ -19,113 +19,144 @@ interface Project {
   };
 }
 
-const ProjectCard: FC<{
-  project: Project;
-  imagePosition?: "left" | "right";
-}> = ({ project, imagePosition = "left" }) => {
+const ProjectCard: React.FC<{ project: Project; defaultOpen?: boolean }> = ({
+  project,
+  defaultOpen = false,
+}) => {
+  const [open, setOpen] = useState(defaultOpen);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const liveLabel = project.technologies.includes("Webflow")
+    ? "visit site"
+    : "try demo";
+  const isPortfolio = project.title.toLowerCase().includes("portfolio");
+  const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    if (open) el.removeAttribute("inert");
+    else el.setAttribute("inert", "");
+  }, [open]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="w-full"
-    >
-      <div
-        className={`flex w-full flex-col items-center gap-8 space-y-8 md:flex-row ${
-          imagePosition === "left" ? "md:flex-row" : "md:flex-row-reverse"
-        }`}
+    <div className="group rounded-md border border-foreground/10 bg-foreground/[0.015] transition-colors hover:border-foreground/25">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls={`proj-body-${slug}`}
+        className="flex w-full items-start gap-4 px-4 py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 sm:px-5"
       >
-        <div className="w-full md:w-1/2">
-          <div
-            className={`relative flex h-[300px] w-full items-center justify-center overflow-hidden rounded-lg`}
-          >
-            <Image
-              src={project.image || ""}
-              alt={`${project.title} project image`}
-              priority
-              width={200}
-              height={200}
-              className="rounded-xl border"
-              style={
-                project.color
-                  ? { borderColor: project.color, color: project.color }
-                  : {}
-              }
-            />
-          </div>
+        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-background sm:h-12 sm:w-12">
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={48}
+            height={48}
+            className="h-full w-full object-cover"
+          />
         </div>
 
-        <div className="w-full space-y-4 text-left md:w-1/2">
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
-            {project.title}
-          </h3>
+        <div className="flex min-w-0 flex-1 flex-col gap-1">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <span className="truncate font-mono text-base font-semibold text-foreground sm:text-lg">
+              {project.title}
+            </span>
+            {project.link && !isPortfolio && (
+              <span className="flex-shrink-0 font-mono text-xs text-brand">
+                live
+              </span>
+            )}
+          </div>
+          {!open && (
+            <p className="line-clamp-2 font-mono text-xs text-muted-foreground sm:text-sm">
+              {project.description}
+            </p>
+          )}
+          {!open && project.technologies.length > 0 && (
+            <div className="mt-1 flex flex-wrap items-center gap-1.5">
+              {project.technologies.slice(0, 5).map((t) => (
+                <TechChip key={t}>{t}</TechChip>
+              ))}
+              {project.technologies.length > 5 && (
+                <span className="font-mono text-[10px] text-muted-foreground">
+                  +{project.technologies.length - 5} more
+                </span>
+              )}
+            </div>
+          )}
+        </div>
 
-          <div className="flex gap-4">
-            {project.github_links && project.github_links.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {project.github_links.map((link, index) => (
-                  <QuickLink
-                    key={index}
-                    data={{
-                      href: link,
-                      label: `GitHub${
-                        project.github_links && project.github_links.length > 1
-                          ? ` ${index + 1}`
-                          : ""
-                      }`,
-                      showIcon: true,
-                    }}
-                  />
+        <span
+          className={`mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md border border-foreground/15 text-muted-foreground transition-all duration-300 ease-out group-hover:border-foreground/30 group-hover:text-foreground ${
+            open ? "rotate-45" : ""
+          }`}
+          aria-hidden
+        >
+          <PlusIcon className="h-3.5 w-3.5" />
+        </span>
+      </button>
+
+      <div
+        ref={panelRef}
+        id={`proj-body-${slug}`}
+        className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="min-h-0">
+          <div
+            className={`border-t border-foreground/10 px-4 py-4 transition-opacity duration-300 sm:px-5 ${
+              open ? "opacity-100 delay-75" : "opacity-0"
+            }`}
+          >
+            <p className="font-mono text-xs leading-relaxed text-foreground/85 sm:text-sm">
+              {project.description}
+            </p>
+
+            {project.technologies.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.technologies.map((t) => (
+                  <TechChip key={t}>{t}</TechChip>
                 ))}
               </div>
             )}
 
-            {project.link && !project.title.includes("Portfolio") && (
-              <QuickLink
-                data={{
-                  href: project.link,
-                  label: project.technologies.includes("Webflow")
-                    ? "View Website"
-                    : "Try Demo",
-                  showIcon: true,
-                }}
-              />
-            )}
-          </div>
+            <div className="mt-4 flex flex-wrap gap-3 font-mono text-xs">
+              {project.link && !isPortfolio && (
+                <LinkChip href={project.link}>{liveLabel}</LinkChip>
+              )}
+              {project.github_links?.map((link, i) => (
+                <LinkChip key={link} href={link}>
+                  {project.github_links!.length > 1
+                    ? `source ${i + 1}`
+                    : "source"}
+                </LinkChip>
+              ))}
+            </div>
 
-          <p className="text-gray-700 dark:text-gray-300">
-            {project.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700 dark:bg-gray-300 dark:text-gray-800"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {project.demo_account_info && (
-            <div className="rounded-lg p-4">
-              <h4 className="mb-2 font-semibold">Demo Account Credentials</h4>
-              <div className="space-y-1 text-sm">
-                <p>
-                  <span className="font-medium">Email:</span>{" "}
+            {project.demo_account_info && (
+              <div className="mt-4 rounded-md border border-dashed border-foreground/15 bg-foreground/[0.02] p-3 font-mono text-xs">
+                <p className="mb-1 text-muted-foreground">
+                  <span aria-hidden className="text-brand/70">
+                    #
+                  </span>{" "}
+                  demo credentials
+                </p>
+                <p className="text-foreground/85">
+                  <span className="text-muted-foreground">email:</span>{" "}
                   {project.demo_account_info.email}
                 </p>
-                <p>
-                  <span className="font-medium">Password:</span>{" "}
+                <p className="text-foreground/85">
+                  <span className="text-muted-foreground">password:</span>{" "}
                   {project.demo_account_info.password}
                 </p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

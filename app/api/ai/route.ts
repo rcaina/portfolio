@@ -3,10 +3,7 @@ import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 
 export const runtime = "nodejs";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
@@ -15,6 +12,10 @@ export async function POST(req: Request) {
     if (typeof message !== "string" || message.trim() === "") {
       return NextResponse.json({ reply: "Empty message." }, { status: 400 });
     }
+
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
