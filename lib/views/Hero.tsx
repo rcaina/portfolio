@@ -30,7 +30,7 @@ const postLines: { text: string; muted?: boolean; break?: boolean }[] = [
     break: true,
   },
   {
-    text: "Open to senior full-stack and software engineering roles.",
+    text: "Always happy to talk shop. Say hi.",
     muted: true,
   },
 ];
@@ -108,16 +108,16 @@ export default function Hero() {
             />
             <span
               role="status"
-              aria-label="Currently available for new roles"
+              aria-label="Online"
               className="absolute -bottom-1.5 -right-1.5 flex h-4 w-4 items-center justify-center"
             >
               <span
                 aria-hidden
-                className="absolute inline-flex h-full w-full animate-ping rounded-full bg-status opacity-60"
+                className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60"
               />
               <span
                 aria-hidden
-                className="relative inline-flex h-3 w-3 rounded-full border-2 border-background bg-status"
+                className="relative inline-flex h-3 w-3 rounded-full border-2 border-background bg-brand"
               />
             </span>
           </motion.div>

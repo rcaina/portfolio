@@ -78,6 +78,8 @@ All site copy lives in [lib/constants.ts](lib/constants.ts). To add a job, proje
 
 When editing experience descriptions, write in plain prose (each bullet is one sentence in `description: string[]`). The card renders them as `›`-prefixed list items.
 
+**Voice/punctuation in site copy:** avoid em dashes (—). Use a period, comma, semicolon, or parentheses instead. Em dashes are only acceptable when no other punctuation conveys the same meaning. This applies to all user-visible strings (Hero, constants.ts, section copy, AI prompt) — not to code comments or this CLAUDE.md.
+
 ### Section structure
 
 Every section in `lib/views/` follows the same skeleton:
