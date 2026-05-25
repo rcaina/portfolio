@@ -1,4 +1,5 @@
-// components/ChatWidget.tsx
+"use client";
+
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Chatbot from "./Chatbot";

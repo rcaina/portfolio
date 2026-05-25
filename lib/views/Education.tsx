@@ -1,6 +1,6 @@
 import Image from "next/image";
 import byulogo from "@/public/images/byulogo.png";
-import { MAJOR, MINOR } from "@/lib/contants";
+import { MAJOR, MINOR } from "@/lib/constants";
 
 const Education = () => {
   return (

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AcademicCapIcon,
   Bars3Icon,
@@ -7,7 +9,7 @@ import {
   Squares2X2Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const SECTIONS = [
@@ -26,10 +28,10 @@ function scrollToSection(id: string) {
 }
 
 export default function SideNav() {
-  const router = useRouter();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  if (router.pathname !== "/") return null;
+  if (pathname !== "/") return null;
 
   const handleSectionClick = (id: string) => {
     scrollToSection(id);

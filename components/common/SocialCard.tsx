@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SocialLink } from "@/pages/index";
+import { type SocialLink } from "@/lib/constants";
 import Link from "next/link";
 
 type Props = {

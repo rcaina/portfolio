@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/common/ProjectCard";
-import { WEBFLOW_PROJECTS } from "@/lib/contants";
+import { WEBFLOW_PROJECTS } from "@/lib/constants";
 
 const OtherProjects = () => {
   return (

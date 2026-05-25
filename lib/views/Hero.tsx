@@ -1,6 +1,6 @@
 import Image from "next/image";
 import profile from "@/public/images/profileImg.jpg";
-import { JOB_TITLE, NAME, socialLinks } from "../contants";
+import { JOB_TITLE, NAME, socialLinks } from "@/lib/constants";
 import SocialCard from "@/components/common/SocialCard";
 
 const Hero = () => {
@@ -28,11 +28,7 @@ const Hero = () => {
           <div className="mt-2 flex flex-col items-center gap-1 sm:flex-row sm:items-center sm:gap-4">
             <h2 className="text-xl font-medium">e-mail:</h2>
             <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = "mailto:hello@outlook.com";
-              }}
+              href="mailto:renzo.caina@outlook.com"
               className="text-lg text-secondary-500 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
             >
               renzo.caina@outlook.com
@@ -41,18 +37,14 @@ const Hero = () => {
         </div>
         <hr className="w-full border-secondary-500" />
         <div className="ml-6 mr-6 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <button
-            onClick={() =>
-              window.open(
-                "https://rcaina.github.io/portfolio/files/renzo_caina.pdf",
-                "_blank",
-                "noopener,noreferrer"
-              )
-            }
+          <a
+            href="/files/renzo_caina.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border border-foreground/20 bg-background/90 px-5 py-3 text-sm shadow-xl backdrop-blur-sm transition-colors hover:border-foreground/40 hover:shadow-secondary-500 md:text-base"
           >
             View Resume
-          </button>
+          </a>
 
           <div className="flex gap-4">
             {socialLinks.map((link, index) => (

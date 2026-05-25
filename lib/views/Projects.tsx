@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/common/ProjectCard";
-import { CODING_PROJECTS } from "@/lib/contants";
+import { CODING_PROJECTS } from "@/lib/constants";
 
 const Projects = () => {
   return (

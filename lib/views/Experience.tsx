@@ -1,6 +1,8 @@
+"use client";
+
 import ExperienceCard from "@/components/common/ExperienceCard";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { EXPERIENCES } from "@/lib/contants";
+import { EXPERIENCES } from "@/lib/constants";
 import { useState } from "react";
 
 const Experience = () => {

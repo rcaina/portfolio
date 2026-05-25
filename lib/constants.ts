@@ -4,8 +4,15 @@ import renew_logo from "@/public/images/renew_logo.jpg";
 import fiddle_logo from "@/public/images/fiddle_logo.jpg";
 import fitsnitch_logo from "@/public/images/fitsnitch_logo.png";
 import byu_logo from "@/public/images/byu_logo.png";
-import { SocialLink } from "../pages";
+import type { StaticImageData } from "next/image";
 import githublogo from "@/public/images/githublogo.png";
+
+export type SocialLink = {
+  name: string;
+  link: string;
+  img: StaticImageData;
+  color?: string;
+};
 import linkedInLogo from "@/public/images/linkedInLogo.png";
 import name_logo from "@/public/images/name_logo.png";
 import ronin_logo from "@/public/images/ronin_logo.jpg";

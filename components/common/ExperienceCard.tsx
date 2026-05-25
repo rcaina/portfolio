@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import QuickLink from "./QuickLink";
