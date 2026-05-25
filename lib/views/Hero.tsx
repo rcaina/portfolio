@@ -44,7 +44,7 @@ export default function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-name"
-      className="relative w-full max-w-3xl scroll-mt-12 px-4 pt-10 md:scroll-mt-14 md:pt-20"
+      className="relative w-full max-w-3xl scroll-mt-12 px-4 pt-20 md:scroll-mt-14 md:pt-20"
     >
       <motion.div
         initial="hidden"
