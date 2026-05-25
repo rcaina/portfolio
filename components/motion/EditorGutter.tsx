@@ -30,9 +30,9 @@ export default function EditorGutter() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-y-0 left-1/2 z-30 hidden w-12 -translate-x-[27rem] border-r border-border/30 lg:block"
+      className="border-border/30 pointer-events-none fixed inset-y-0 left-1/2 z-30 hidden w-12 -translate-x-[27rem] border-r lg:block"
     >
-      <div className="flex h-screen flex-col justify-between py-6 pr-2 text-right font-mono text-[10px] leading-none text-muted-foreground/35">
+      <div className="text-muted-foreground/35 flex h-screen flex-col justify-between py-6 pr-2 text-right font-mono text-[10px] leading-none">
         {Array.from({ length: TOTAL_LINES }, (_, i) => {
           const isActive = i === active;
           return (

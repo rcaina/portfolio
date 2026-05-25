@@ -8,7 +8,7 @@ export default function Header() {
     <header className="contents">
       <Link
         href="/"
-        className="group fixed left-4 top-4 z-50 grid h-12 grid-cols-[3rem_0fr] items-center overflow-hidden rounded-md border border-foreground/20 bg-background/90 shadow-sm backdrop-blur-sm transition-[grid-template-columns,border-color,box-shadow] duration-300 ease-out hover:grid-cols-[3rem_1fr] hover:border-foreground/40 hover:shadow-md focus:outline-none focus-visible:grid-cols-[3rem_1fr] focus-visible:border-foreground/40 focus-visible:ring-2 focus-visible:ring-brand/60 md:left-6 md:top-6"
+        className="bg-background/90 group fixed left-4 top-4 z-50 grid h-12 grid-cols-[3rem_0fr] items-center overflow-hidden rounded-md border border-foreground/20 shadow-sm backdrop-blur-sm transition-[grid-template-columns,border-color,box-shadow] duration-300 ease-out hover:grid-cols-[3rem_1fr] hover:border-foreground/40 hover:shadow-md focus:outline-none focus-visible:grid-cols-[3rem_1fr] focus-visible:border-foreground/40 focus-visible:ring-2 focus-visible:ring-brand/60 md:left-6 md:top-6"
         aria-label={`${NAME}, home`}
       >
         <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-md">
