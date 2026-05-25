@@ -2,19 +2,10 @@ import "react-toastify/dist/ReactToastify.min.css";
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import Header from "@/components/layout/Header";
-import SideNav from "@/components/layout/SideNav";
-import ThemeToggle from "@/components/layout/ThemeToggle";
-import ChatWidget from "@/components/common/ChatWidget";
-import Container from "@/components/layout/Container";
+import CommandPalette from "@/components/common/CommandPalette";
 import Providers from "./providers";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -22,16 +13,27 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteName = "Renzo Caiña";
+const siteTitle = "Renzo Caiña, Full Stack Software Developer";
 const siteDescription =
-  "Personal portfolio built using Next.js and deployed with Vercel.";
+  "Renzo Caiña: full-stack software developer building products with Next.js, TypeScript, and Postgres. Currently at Belle. Previously at Renew Biotechnologies, Fiddle, and BYU.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://renzocaina.com"
   ),
-  title: "Portfolio",
+  title: {
+    default: siteTitle,
+    template: "%s · Renzo Caiña",
+  },
   description: siteDescription,
+  applicationName: siteName,
+  authors: [{ name: siteName, url: "https://renzocaina.com" }],
+  creator: siteName,
   manifest: "/manifest.json",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -40,23 +42,24 @@ export const metadata: Metadata = {
     apple: "/icons/apple-icon.png",
   },
   openGraph: {
-    title: "Portfolio",
+    title: siteTitle,
     description: siteDescription,
+    url: "/",
+    siteName,
     type: "website",
-    images: ["/icons/apple-icon.png"],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio",
+    title: siteTitle,
     description: siteDescription,
-    images: ["/icons/apple-icon.png"],
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#f8f4ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#131210" },
   ],
 };
 
@@ -66,21 +69,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning className={jetbrainsMono.variable}>
       <body>
         <Providers>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border focus:border-foreground/30 focus:bg-background focus:px-3 focus:py-2 focus:font-mono focus:text-sm focus:text-foreground focus:shadow-md"
+          >
+            Skip to content
+          </a>
           <div className="flex min-h-screen flex-col bg-background">
             <Header />
-            <main className="flex grow flex-col">
-              <Container>{children}</Container>
+            <main
+              id="main"
+              className="mx-auto flex w-full max-w-5xl grow flex-col"
+            >
+              {children}
             </main>
-            <SideNav />
-            <ThemeToggle />
-            <ChatWidget />
+            <CommandPalette />
           </div>
         </Providers>
       </body>
