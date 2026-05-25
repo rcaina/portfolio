@@ -12,6 +12,7 @@ import ronin_logo from "@/public/images/ronin_logo.jpg";
 import agave_logo from "@/public/images/agave_logo.png";
 import union_logo from "@/public/images/unioncp_logo.jpg";
 import corecast_logo from "@/public/images/corecast_logo.png";
+import belle_logo from "@/public/images/belle_yellow_mark_blue_bg.png";
 
 export const NAME = "Renzo Caiña";
 export const JOB_TITLE = "Full Stack Software Developer";
@@ -36,9 +37,20 @@ export const socialLinks: SocialLink[] = [
 
 export const EXPERIENCES = [
   {
+    company: "Belle",
+    title: "Full Stack Software Engineer",
+    date: "April 2026 - Present",
+    location: "Drapet, UT",
+    image: belle_logo,
+    landingPage: "https://www.joinbelle.com/",
+    portal: "",
+    description: [],
+    technologies: [],
+  },
+  {
     company: "CoreCast",
     title: "Full Stack Software Engineer",
-    date: "May 2025 - Present",
+    date: "May 2025 - April 2026",
     location: "Remote",
     image: corecast_logo,
     landingPage: "https://www.corecastre.com/",

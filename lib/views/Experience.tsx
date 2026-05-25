@@ -41,7 +41,7 @@ const Experience = () => {
               experience={experience}
               imagePosition={index % 2 ? "left" : "right"}
             />
-            {experience.subsidiaries?.length > 0 && (
+            {(experience.subsidiaries?.length ?? 0) > 0 && (
               <div className="mb-4 mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-100/90 dark:border-gray-600 dark:bg-white/[0.06]">
                 <button
                   onClick={() => toggleAccordion(index)}
