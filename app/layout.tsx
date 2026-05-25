@@ -2,12 +2,25 @@ import "react-toastify/dist/ReactToastify.min.css";
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/layout/Header";
 import SideNav from "@/components/layout/SideNav";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import ChatWidget from "@/components/common/ChatWidget";
 import Container from "@/components/layout/Container";
 import Providers from "./providers";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 const siteDescription =
   "Personal portfolio built using Next.js and deployed with Vercel.";
@@ -53,10 +66,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="stylesheet" href="https://use.typekit.net/lny5tsf.css" />
-      </head>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <body>
         <Providers>
           <div className="flex min-h-screen flex-col bg-background">

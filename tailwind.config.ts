@@ -5,15 +5,21 @@ import tailwindAnimate from "tailwindcss-animate";
 export default {
   darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./lib/views/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        heading: ["Degular Variable", "sans-serif"], // For headings
-        sans: ["IBM Plex Sans", "sans-serif"], // For body text
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: [
+          "var(--font-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace",
+        ],
       },
       fontWeight: {
         bold: "700",
@@ -132,10 +138,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-      },
-      boxShadow: {
-        "custom-bottom-right": "4px 4px 8px rgba(0, 0, 0, 0.25)",
-        "custom-bottom-left": "-4px 8px 8px rgba(0, 0, 0, 0.25)",
       },
       borderRadius: {
         lg: `var(--radius)`,
