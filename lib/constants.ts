@@ -4,8 +4,15 @@ import renew_logo from "@/public/images/renew_logo.jpg";
 import fiddle_logo from "@/public/images/fiddle_logo.jpg";
 import fitsnitch_logo from "@/public/images/fitsnitch_logo.png";
 import byu_logo from "@/public/images/byu_logo.png";
-import { SocialLink } from "../pages";
+import type { StaticImageData } from "next/image";
 import githublogo from "@/public/images/githublogo.png";
+
+export type SocialLink = {
+  name: string;
+  link: string;
+  img: StaticImageData;
+  color?: string;
+};
 import linkedInLogo from "@/public/images/linkedInLogo.png";
 import name_logo from "@/public/images/name_logo.png";
 import ronin_logo from "@/public/images/ronin_logo.jpg";
@@ -40,7 +47,7 @@ export const EXPERIENCES = [
     company: "Belle",
     title: "Full Stack Software Engineer",
     date: "April 2026 - Present",
-    location: "Drapet, UT",
+    location: "Draper, UT",
     image: belle_logo,
     landingPage: "https://www.joinbelle.com/",
     portal: "",
@@ -314,7 +321,7 @@ export const CODING_PROJECTS = [
     image: ronin_logo,
     github_links: ["https://github.com/rcaina/ronin"],
     description:
-      "Ronin is a web application that allows users to create and manage their own personal budget. Inspired by my wife and I having a unique way to manage our finances and wanting to get away from using a spreadsheet. It is built with Next.js, TailwindCSS, and TypeScript.",
+      "Ronin is a web application that allows users to create and manage their own personal budget. Inspired by my wife and I having a unique way to manage our finances and wanting to get away from using a spreadsheet. It is built with Next.js App Router, TailwindCSS, and TypeScript.",
     technologies: [
       "T3-Stack",
       "pnpm",
@@ -341,7 +348,7 @@ export const CODING_PROJECTS = [
     image: name_logo,
     github_links: ["https://github.com/rcaina/portfolio"],
     description:
-      "My personal portfolio built with Next.js, TailwindCSS, and TypeScript.",
+      "My personal portfolio built with Next.js App Router, TailwindCSS, and TypeScript.",
     ////follow tech stack from read me for technologies
     technologies: [
       "Next.js",

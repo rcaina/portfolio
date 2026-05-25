@@ -1,33 +1,31 @@
 import ProjectCard from "@/components/common/ProjectCard";
-import { CODING_PROJECTS } from "@/lib/contants";
+import { CODING_PROJECTS } from "@/lib/constants";
+import SectionHeading from "@/components/common/SectionHeading";
 
 const Projects = () => {
   return (
-    <div
+    <section
       id="projects"
-      className="flex scroll-mt-12 flex-col gap-8 md:scroll-mt-14"
+      aria-labelledby="projects-title"
+      className="flex w-full max-w-3xl scroll-mt-12 flex-col gap-6 px-4 md:scroll-mt-14"
     >
-      <div className="flex w-full flex-col items-center gap-4 rounded-xl">
-        <div className="flex w-full items-center justify-center gap-4">
-          <hr className="w-full border-secondary-500" />
-          <h2 className="text-4xl">PROJECTS</h2>
-          <hr className="w-full border-secondary-500" />
-        </div>
-      </div>
-      <div className="flex flex-col gap-12">
+      <SectionHeading
+        id="projects-title"
+        label="projects"
+        number="02"
+        command="find"
+        count={CODING_PROJECTS.length}
+      />
+      <div className="flex flex-col gap-2">
         {CODING_PROJECTS.map((project, index) => (
-          <div key={index}>
-            <ProjectCard
-              project={project}
-              imagePosition={index % 2 ? "left" : "right"}
-            />
-            {index !== CODING_PROJECTS.length - 1 && (
-              <hr className="w-full border-foreground" />
-            )}
-          </div>
+          <ProjectCard
+            key={index}
+            project={project}
+            defaultOpen={index === 0}
+          />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

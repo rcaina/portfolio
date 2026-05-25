@@ -1,89 +1,31 @@
 import ExperienceCard from "@/components/common/ExperienceCard";
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { EXPERIENCES } from "@/lib/contants";
-import { useState } from "react";
+import SectionHeading from "@/components/common/SectionHeading";
+import { EXPERIENCES } from "@/lib/constants";
 
 const Experience = () => {
-  const [openAccordions, setOpenAccordions] = useState<Set<number>>(
-    () =>
-      new Set(
-        EXPERIENCES.map((exp, i) => i).filter(
-          (i) => (EXPERIENCES[i].subsidiaries?.length ?? 0) > 0
-        )
-      )
-  );
-
-  const toggleAccordion = (index: number) => {
-    setOpenAccordions((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-      return next;
-    });
-  };
-
   return (
-    <div
+    <section
       id="experience"
-      className="flex scroll-mt-12 flex-col gap-8 md:scroll-mt-14"
+      aria-labelledby="experience-title"
+      className="flex w-full max-w-3xl scroll-mt-12 flex-col gap-6 px-4 md:scroll-mt-14"
     >
-      <div className="flex w-full flex-col items-center gap-4 rounded-xl">
-        <div className="flex w-full items-center justify-center gap-4">
-          <hr className="w-full border-secondary-500" />
-          <h2 className="text-4xl">EXPERIENCE</h2>
-          <hr className="w-full border-secondary-500" />
-        </div>
-      </div>
-      <div className="flex flex-col gap-12">
+      <SectionHeading
+        id="experience-title"
+        label="experience"
+        number="01"
+        command="cat"
+        count={EXPERIENCES.length}
+      />
+      <div className="flex flex-col gap-2">
         {EXPERIENCES.map((experience, index) => (
-          <div key={index}>
-            <ExperienceCard
-              experience={experience}
-              imagePosition={index % 2 ? "left" : "right"}
-            />
-            {(experience.subsidiaries?.length ?? 0) > 0 && (
-              <div className="mb-4 mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-100/90 dark:border-gray-600 dark:bg-white/[0.06]">
-                <button
-                  onClick={() => toggleAccordion(index)}
-                  className="flex w-full items-center justify-center gap-2 px-6 py-4 text-left font-medium transition-colors hover:bg-gray-100 hover:text-secondary-600 dark:hover:bg-white/[0.09] dark:hover:text-secondary-400"
-                  aria-expanded={openAccordions.has(index)}
-                >
-                  {openAccordions.has(index) ? (
-                    <>
-                      <ChevronUpIcon className="h-5 w-5 shrink-0" />
-                      Hide Subsidiaries ({experience.subsidiaries?.length})
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDownIcon className="h-5 w-5 shrink-0" />
-                      Show Subsidiaries ({experience.subsidiaries?.length})
-                    </>
-                  )}
-                </button>
-                {openAccordions.has(index) && (
-                  <div className="border-t border-gray-200 px-4 pb-4 pt-2 dark:border-gray-600">
-                    {experience.subsidiaries?.map((sub, subIndex) => (
-                      <div
-                        key={subIndex}
-                        className="mb-4 py-4 pl-5 pr-5 last:mb-0"
-                      >
-                        <ExperienceCard
-                          experience={sub}
-                          imagePosition={subIndex % 2 ? "left" : "right"}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-            {index !== EXPERIENCES.length - 1 && (
-              <hr className="mt-6 w-full border-foreground" />
-            )}
-          </div>
+          <ExperienceCard
+            key={index}
+            experience={experience}
+            defaultOpen={index === 0}
+          />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

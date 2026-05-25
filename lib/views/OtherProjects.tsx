@@ -1,35 +1,27 @@
 import ProjectCard from "@/components/common/ProjectCard";
-import { WEBFLOW_PROJECTS } from "@/lib/contants";
+import SectionHeading from "@/components/common/SectionHeading";
+import { WEBFLOW_PROJECTS } from "@/lib/constants";
 
 const OtherProjects = () => {
   return (
-    <div
+    <section
       id="other-projects"
-      className="flex w-full scroll-mt-12 flex-col gap-8 md:scroll-mt-14"
+      aria-labelledby="other-projects-title"
+      className="flex w-full max-w-3xl scroll-mt-12 flex-col gap-6 px-4 md:scroll-mt-14"
     >
-      <div className="flex w-full flex-col items-center gap-4 rounded-xl">
-        <div className="flex w-full items-center justify-center gap-4">
-          <hr className="w-full border-secondary-500" />
-          <div className="whitespace-nowrap">
-            <h2 className="text-4xl">WEBFLOW PROJECTS</h2>
-          </div>
-          <hr className="w-full border-secondary-500" />
-        </div>
-      </div>
-      <div className="flex flex-col gap-12">
+      <SectionHeading
+        id="other-projects-title"
+        label="webflow"
+        number="03"
+        command="ls"
+        count={WEBFLOW_PROJECTS.length}
+      />
+      <div className="flex flex-col gap-2">
         {WEBFLOW_PROJECTS.map((project, index) => (
-          <div key={index}>
-            <ProjectCard
-              project={project}
-              imagePosition={index % 2 ? "left" : "right"}
-            />
-            {index !== WEBFLOW_PROJECTS.length - 1 && (
-              <hr className="w-full border-foreground" />
-            )}
-          </div>
+          <ProjectCard key={index} project={project} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
