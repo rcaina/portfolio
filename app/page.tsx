@@ -7,11 +7,13 @@ import GithubStrip from "@/components/common/GithubStrip";
 import SectionReveal from "@/components/common/SectionReveal";
 import DotGridBackground from "@/components/motion/DotGridBackground";
 import EditorGutter from "@/components/motion/EditorGutter";
+import BrandGlow from "@/components/motion/BrandGlow";
 
 export default function Home() {
   return (
     <>
       <DotGridBackground />
+      <BrandGlow />
       <EditorGutter />
       <div className="relative z-10 mx-auto flex w-full flex-col pb-32">
         <SectionReveal>

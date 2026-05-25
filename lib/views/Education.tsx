@@ -26,13 +26,13 @@ const Education = () => {
           </span>
         </div>
 
-        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-background">
+        <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-logo-surface">
           <Image
             src={byulogo}
-            alt="BYU logo"
+            alt="BYU"
             width={48}
             height={48}
-            className="h-full w-full bg-white object-contain"
+            className="h-full w-full object-contain"
           />
         </div>
 

@@ -46,11 +46,6 @@ export default function Hero() {
       aria-labelledby="hero-name"
       className="relative w-full max-w-3xl scroll-mt-12 px-4 pt-10 md:scroll-mt-14 md:pt-20"
     >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-4 top-4 -z-10 h-[min(55vw,20rem)] rounded-2xl bg-gradient-to-br from-brand/15 via-brand/[0.04] to-transparent blur-2xl"
-      />
-
       <motion.div
         initial="hidden"
         animate="show"
@@ -65,7 +60,7 @@ export default function Hero() {
             ~ renzo.caina/ <span className="text-brand">$</span>{" "}
             <span className="text-foreground">whoami</span>
           </span>
-          <span aria-hidden className="hidden text-foreground/40 sm:inline">
+          <span aria-hidden className="hidden text-foreground/60 sm:inline">
             v26.05 · branch/main
           </span>
         </motion.div>

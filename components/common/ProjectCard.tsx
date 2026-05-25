@@ -1,9 +1,9 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
-import { ArrowUpRightIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState } from "react";
+import { LinkChip, TechChip } from "./Chip";
 
 interface Project {
   title: string;
@@ -24,11 +24,19 @@ const ProjectCard: React.FC<{ project: Project; defaultOpen?: boolean }> = ({
   defaultOpen = false,
 }) => {
   const [open, setOpen] = useState(defaultOpen);
+  const panelRef = useRef<HTMLDivElement>(null);
   const liveLabel = project.technologies.includes("Webflow")
     ? "visit site"
     : "try demo";
   const isPortfolio = project.title.toLowerCase().includes("portfolio");
   const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    if (open) el.removeAttribute("inert");
+    else el.setAttribute("inert", "");
+  }, [open]);
 
   return (
     <div className="group rounded-md border border-foreground/10 bg-foreground/[0.015] transition-colors hover:border-foreground/25">
@@ -42,7 +50,7 @@ const ProjectCard: React.FC<{ project: Project; defaultOpen?: boolean }> = ({
         <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-background sm:h-12 sm:w-12">
           <Image
             src={project.image}
-            alt={`${project.title} logo`}
+            alt={project.title}
             width={48}
             height={48}
             className="h-full w-full object-cover"
@@ -90,9 +98,8 @@ const ProjectCard: React.FC<{ project: Project; defaultOpen?: boolean }> = ({
       </button>
 
       <div
+        ref={panelRef}
         id={`proj-body-${slug}`}
-        role="region"
-        aria-hidden={!open}
         className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
@@ -152,36 +159,5 @@ const ProjectCard: React.FC<{ project: Project; defaultOpen?: boolean }> = ({
     </div>
   );
 };
-
-function TechChip({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded border border-foreground/15 bg-foreground/[0.03] px-1.5 py-0.5 font-mono text-[10px] text-foreground/75">
-      {children}
-    </span>
-  );
-}
-
-function LinkChip({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group/link inline-flex min-h-11 items-center gap-1.5 rounded-md border border-foreground/15 bg-foreground/[0.02] px-3 py-2 text-foreground/80 transition-colors hover:border-foreground/40 hover:bg-foreground/5 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
-    >
-      <span>{children}</span>
-      <ArrowUpRightIcon
-        className="h-3 w-3 opacity-60 group-hover/link:opacity-100"
-        aria-hidden
-      />
-    </Link>
-  );
-}
 
 export default ProjectCard;

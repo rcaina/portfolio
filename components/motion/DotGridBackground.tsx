@@ -41,10 +41,9 @@ export default function DotGridBackground() {
           top: "-100vh",
           bottom: "-100vh",
           backgroundImage:
-            "radial-gradient(circle at center, hsl(var(--foreground) / 0.09) 1px, transparent 1px)",
+            "radial-gradient(circle at center, oklch(var(--foreground) / 0.09) 1px, transparent 1px)",
           backgroundSize: "24px 24px",
           transform: `translate3d(0, ${-offset}px, 0)`,
-          willChange: "transform",
         }}
       />
     </div>

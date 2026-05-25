@@ -1,9 +1,9 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
-import { ArrowUpRightIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState } from "react";
+import { LinkChip, TechChip } from "./Chip";
 
 interface Experience {
   title: string;
@@ -41,9 +41,17 @@ const ExperienceCard: React.FC<Props> = ({
   const hasSubs = (experience.subsidiaries?.length ?? 0) > 0;
   const canExpand = hasDescription || hasTech || hasSubs;
   const [open, setOpen] = useState(defaultOpen);
+  const panelRef = useRef<HTMLDivElement>(null);
   const year = extractYear(experience.date);
   const isCurrent = /present/i.test(experience.date);
   const slug = experience.company.replace(/\s+/g, "-");
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    if (open) el.removeAttribute("inert");
+    else el.setAttribute("inert", "");
+  }, [open]);
 
   const showYearColumn = !nested && year !== "";
   const gridClass = showYearColumn
@@ -72,7 +80,7 @@ const ExperienceCard: React.FC<Props> = ({
       <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-background sm:h-11 sm:w-11">
         <Image
           src={experience.image}
-          alt={`${experience.company} logo`}
+          alt={experience.company}
           width={48}
           height={48}
           className="h-full w-full object-cover"
@@ -196,9 +204,7 @@ const ExperienceCard: React.FC<Props> = ({
       : "border-foreground/10 bg-foreground/[0.015]"
   } ${canExpand ? "hover:border-foreground/25" : ""}`;
 
-  const bodyPaddingClass = showYearColumn
-    ? "border-t border-foreground/10 px-4 py-4 sm:pl-[5.5rem] sm:pr-5"
-    : "border-t border-foreground/10 px-4 py-4 sm:px-5";
+  const bodyPaddingClass = "border-t border-foreground/10 px-4 py-4 sm:px-5";
 
   if (!canExpand) {
     return <div className={wrapperClass}>{head}</div>;
@@ -217,9 +223,8 @@ const ExperienceCard: React.FC<Props> = ({
       </button>
 
       <div
+        ref={panelRef}
         id={`exp-body-${slug}`}
-        role="region"
-        aria-hidden={!open}
         className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
@@ -237,36 +242,5 @@ const ExperienceCard: React.FC<Props> = ({
     </div>
   );
 };
-
-function TechChip({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded border border-foreground/15 bg-foreground/[0.03] px-1.5 py-0.5 font-mono text-[10px] text-foreground/75">
-      {children}
-    </span>
-  );
-}
-
-function LinkChip({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group/link inline-flex min-h-11 items-center gap-1.5 rounded-md border border-foreground/15 bg-foreground/[0.02] px-3 py-2 text-foreground/80 transition-colors hover:border-foreground/40 hover:bg-foreground/5 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
-    >
-      <span>{children}</span>
-      <ArrowUpRightIcon
-        className="h-3 w-3 opacity-60 group-hover/link:opacity-100"
-        aria-hidden
-      />
-    </Link>
-  );
-}
 
 export default ExperienceCard;
