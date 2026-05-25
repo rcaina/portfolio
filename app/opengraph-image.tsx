@@ -21,7 +21,7 @@ export default async function Image() {
           fontFamily:
             "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
           backgroundImage:
-            "linear-gradient(to bottom right, rgba(115, 113, 252, 0.06), transparent 60%)",
+            "linear-gradient(to bottom right, rgba(244, 125, 55, 0.08), transparent 60%)",
         }}
       >
         <div
@@ -35,7 +35,7 @@ export default async function Image() {
           }}
         >
           <span>~ renzo.caina/</span>
-          <span style={{ color: "#7371fc" }}>$</span>
+          <span style={{ color: "#f47d37" }}>$</span>
           <span style={{ color: "#ece7d8" }}>whoami</span>
         </div>
 

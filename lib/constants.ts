@@ -22,7 +22,7 @@ import corecast_logo from "@/public/images/corecast_logo.png";
 import belle_logo from "@/public/images/belle_yellow_mark_blue_bg.png";
 
 export const NAME = "Renzo Caiña";
-export const JOB_TITLE = "Full Stack Software Developer";
+export const JOB_TITLE = "Full Stack Software Engineer";
 export const UNIVERSITY = "Brigham Young University";
 export const MAJOR = "Bachelor of Science in Computer Science";
 export const MINOR = "Minor in Business Management";
