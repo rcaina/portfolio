@@ -160,5 +160,5 @@ Pre-commit (husky + lint-staged): runs `pnpm lint` and `prettier --write` on sta
 ## Deployment
 
 - **Vercel** for the full app (API routes need a Node runtime).
-- `.github/workflows/ci.yml` includes a static-export-to-Pages path (`./out` upload) — but that path can't host `/api/ai`. The live OpenAI-backed site must run on Vercel/Docker.
+- `.github/workflows/ci.yml` runs lint, build, and typecheck only. No Pages deploy: `/api/ai` and the edge OG route are incompatible with `output: export`.
 - `Dockerfile` targets a standalone build (`output: "standalone"` in `next.config.js`).
