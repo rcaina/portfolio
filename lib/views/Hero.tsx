@@ -106,20 +106,6 @@ export default function Hero() {
               height={176}
               className="h-28 w-28 rounded-md border border-foreground/15 object-cover shadow-[0_14px_32px_-18px_hsl(var(--brand)/0.45)] sm:h-32 sm:w-32 md:h-40 md:w-40"
             />
-            <span
-              role="status"
-              aria-label="Online"
-              className="absolute -bottom-1.5 -right-1.5 flex h-4 w-4 items-center justify-center"
-            >
-              <span
-                aria-hidden
-                className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60"
-              />
-              <span
-                aria-hidden
-                className="relative inline-flex h-3 w-3 rounded-full border-2 border-background bg-brand"
-              />
-            </span>
           </motion.div>
         </div>
 

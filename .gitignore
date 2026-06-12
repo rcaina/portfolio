@@ -38,3 +38,6 @@ npm-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#belle md file
+.belle-details.md

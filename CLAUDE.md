@@ -72,7 +72,7 @@ public/
 
 All site copy lives in [lib/constants.ts](lib/constants.ts). To add a job, project, or social link, edit the corresponding exported array — **do not** create per-entry components or files. Logo images are imported at the top of `constants.ts` as `StaticImageData` and bundled.
 
-- `EXPERIENCES[]` — array of `Experience` objects. `subsidiaries: []` is required; nested subsidiaries render as indented child cards (used by Renew Biotechnologies).
+- `EXPERIENCES[]` — array of `Experience` objects. `subsidiaries: []` is required; nested subsidiaries render as indented child cards (used by Renew Biotechnologies). Two separate skill lists: `technologies` (the stack you built in — languages, frameworks, libraries, infra) and optional `integrations` (third-party services you wired up — Stripe, Clerk, analytics, shipping/auth APIs). They render as distinct chip groups (integrations are brand-tinted via `IntegrationChip`), and when `integrations` is present the stack group gets a "stack" label. Keep a service in only one list, not both.
 - `CODING_PROJECTS[]` — coding work. Has optional `demo_account_info` for try-it credentials.
 - `WEBFLOW_PROJECTS[]` — visual-only/no-code projects (Webflow/Figma). Note: `ProjectCard` switches the live button label to "visit site" when `technologies` includes `"Webflow"`.
 
