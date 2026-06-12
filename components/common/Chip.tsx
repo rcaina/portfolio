@@ -9,6 +9,14 @@ export function TechChip({ children }: { children: React.ReactNode }) {
   );
 }
 
+export function IntegrationChip({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="rounded border border-brand/30 bg-brand/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-brand/90">
+      {children}
+    </span>
+  );
+}
+
 export function LinkChip({
   href,
   children,

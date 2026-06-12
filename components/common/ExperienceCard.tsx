@@ -3,7 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
-import { LinkChip, TechChip } from "./Chip";
+import { IntegrationChip, LinkChip, TechChip } from "./Chip";
 
 interface Experience {
   title: string;
@@ -15,6 +15,7 @@ interface Experience {
   portal: string;
   description: string[];
   technologies?: string[];
+  integrations?: string[];
   color?: string;
   backgroundColor?: string;
   subsidiaries?: Experience[];
@@ -38,8 +39,9 @@ const ExperienceCard: React.FC<Props> = ({
 }) => {
   const hasDescription = experience.description.length > 0;
   const hasTech = (experience.technologies?.length ?? 0) > 0;
+  const hasIntegrations = (experience.integrations?.length ?? 0) > 0;
   const hasSubs = (experience.subsidiaries?.length ?? 0) > 0;
-  const canExpand = hasDescription || hasTech || hasSubs;
+  const canExpand = hasDescription || hasTech || hasIntegrations || hasSubs;
   const [open, setOpen] = useState(defaultOpen);
   const panelRef = useRef<HTMLDivElement>(null);
   const year = extractYear(experience.date);
@@ -164,10 +166,30 @@ const ExperienceCard: React.FC<Props> = ({
       )}
 
       {hasTech && (
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {experience.technologies!.map((t) => (
-            <TechChip key={t}>{t}</TechChip>
-          ))}
+        <div className="mt-4">
+          {hasIntegrations && (
+            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+              stack
+            </p>
+          )}
+          <div className="flex flex-wrap gap-1.5">
+            {experience.technologies!.map((t) => (
+              <TechChip key={t}>{t}</TechChip>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {hasIntegrations && (
+        <div className="mt-4">
+          <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            integrations
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {experience.integrations!.map((t) => (
+              <IntegrationChip key={t}>{t}</IntegrationChip>
+            ))}
+          </div>
         </div>
       )}
 
