@@ -23,7 +23,6 @@ const fadeUp = {
 
 const postLines: { text: string; muted?: boolean; break?: boolean }[] = [
   { text: `${JOB_TITLE} @ Belle.` },
-  { text: "Previously Renew Biotechnologies, Fiddle, BYU.", muted: true },
   {
     text: "Currently shipping software for weight loss and longevity care.",
     muted: true,
