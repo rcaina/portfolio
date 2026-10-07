@@ -21,8 +21,8 @@ export default function Header() {
             className="h-12 w-12 object-cover"
           />
         </span>
-        <span className="min-w-0 overflow-hidden whitespace-nowrap pr-3 font-mono text-sm font-medium text-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-          {NAME}
+        <span className="min-w-0 overflow-hidden whitespace-nowrap font-mono text-sm font-medium text-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+          <span className="block px-3">{NAME}</span>
         </span>
       </Link>
     </header>
