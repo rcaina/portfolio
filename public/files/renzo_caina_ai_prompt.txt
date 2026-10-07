@@ -16,11 +16,23 @@ Brigham Young University, Provo, UT (Aug 2015 – Apr 2022)
 EXPERIENCE
 ----------------------------------------
 
-Full Stack Software Engineer – CoreCast (May 2025 – Present)
-- Helped develop CoreCast from early stages through initial launch; the platform is now live.
+Full Stack Software Engineer – Belle Health (Apr 2026 – Present, Draper, UT)
+- Top contributor to Belle's HIPAA telehealth platform: a monorepo of Next.js apps (patient portal, admin, intake questionnaire) on Supabase Postgres (255 tables) and Deno edge functions. Authored 345 migrations and 50 serverless functions.
+- Built an in-house patient intake funnel replacing a third-party vendor, with versioned questionnaires, resumable sessions, and A/B testing, preserving UTM and referral attribution at cutover.
+- Built revenue infrastructure from scratch: Stripe checkout with wallets and buy-now-pay-later, a promo-code engine, an account-credit ledger, the Belle Rewards loyalty program (cash-back, milestones, birthday and community rewards), and Dub.co affiliate attribution with a first-referrer rule that decides partner payouts.
+- Diagnosed background jobs consuming 90% of production database time using pg_stat_statements, then replaced offset pagination with keyset scans and partial indexes.
+- Built an in-app clinical care inbox on Intercom with team routing, assignment, and thread continuation, so care staff work with full patient chart context instead of a separate vendor tool.
+- Built monitoring and alerting: hourly job and queue health sampling, a daily Slack digest, PostHog alert triage, and a query-performance time series.
+- Implemented PHI safeguards: fail-closed analytics allowlists that keep patient identifiers out of telemetry, two-channel SMS consent separating marketing from clinical messages, quiet-hours enforcement, and error masking. These are enforced by a 200-check CI regression suite and documented engineering standards that let multiple engineers and AI coding agents change the system safely.
+- Built API endpoints that let Belle's AI patient-support agent safely perform account changes (pause, reschedule, update address, grant credit) with validation and idempotency, and kept the agent's knowledge base in sync with what the platform actually shipped. Also built an internal AI engineering agent with an evaluation suite, context guards, and controls against exposing sensitive information.
+- Also led development of joinbelle.com, the marketing site and top of the patient acquisition funnel: migrated it from Webflow to Next.js and a Sanity headless CMS with 60+ SEO-preserving redirects, and built a PostHog A/B testing framework, JSON-LD structured data, a generator for programmatic ad landing pages, a treatment-finder quiz with a recommendation engine, and UTM-preserving calls to action that carry attribution into the intake funnel.
+
+Full Stack Software Engineer – CoreCast (May 2025 – Apr 2026)
+- CoreCast is a multifamily real-estate investment platform. I was the primary author of its web application (over 80% of web app commits on a four-engineer team) and helped take it from early stages through launch.
+- Built the underwriting and proforma modeling workflow, including rent-roll and T-12 ingestion from Excel files with handling for sparse and irregular spreadsheets.
+- Built market comparables and property search on Google Maps with pin and cluster views, a deal pipeline, and report exports.
 - Built and integrated Stripe-based subscription infrastructure supporting organization-level billing, plan tiers, and automated lifecycle management (signup, upgrade, downgrade, cancellation).
 - Implemented secure authentication and multi-tenant organization management using Clerk, enabling role-based access and seamless onboarding across teams.
-- Developed core application features across a Next.js and Node.js stack, improving platform functionality and reliability for users and internal teams.
 - Optimized the local development environment and routing performance, significantly improving page load and navigation speed to accelerate testing and developer workflow.
 
 Full Stack Software Developer – Renew Biotechnologies (Aug 2023 – Apr 2025)
@@ -69,17 +81,18 @@ Web Developer – BYU Center for Teaching & Learning (Jan 2019 – Apr 2019)
 TECHNOLOGIES & TOOLS
 ----------------------------------------
 Languages: TypeScript, JavaScript, HTML, CSS, PHP, SQL, Python
-Frameworks/Libraries: React, Next.js, TailwindCSS, Node.js, GraphQL
-Tools & Platforms: AWS (S3, SES, RDS, DynamoDB, Cognito), Firebase, PostgreSQL, MongoDB, Docker, Terraform, OpenVPN, Stripe, NextAuth, GitHub, Figma, Shippo, Clerk, Retool, Temporal, Drizzle, TanStack, AG-GRID, Neon, Fly.io
+Frameworks/Libraries: React, Next.js, TailwindCSS, Node.js, GraphQL, Deno, Prisma, Drizzle, Zod, Framer Motion, Vitest, Playwright
+Tools & Platforms: Supabase, PostgreSQL (pg_stat_statements, RLS, pg_cron), AWS (S3, SES, RDS, DynamoDB, Cognito), Firebase, MongoDB, Docker, Terraform, OpenVPN, Stripe, Intercom, PostHog, Sanity, Dub.co, Cal.com, Customer.io, NextAuth, Clerk, GitHub Actions, Vercel, Figma, Shippo, Retool, Temporal, TanStack, AG-GRID, Google Maps, Neon, Fly.io, Anthropic, OpenAI and Google GenAI APIs
 
 ----------------------------------------
 PROJECTS
 ----------------------------------------
 Ronin – Personal Budgeting Web App
 - Product: Web application that lets users create and manage a personal budget, inspired by the system my wife and I used in spreadsheets and wanted to improve.
-- Role: Lead full stack developer and product owner, responsible for architecture, implementation, and UX.
+- Role: Sole developer and product owner, responsible for architecture, implementation, and UX (every commit is mine).
 - Highlights: Replaced a manual spreadsheet-based process with a structured budgeting tool, built authenticated flows, and designed views for tracking categories and spending over time; deployed a demo environment with seeded data.
-- Tech: T3-stack (Next.js, React, TypeScript, TailwindCSS), Auth.js, Prisma, PostgreSQL (Neon), TanStack, pnpm, Vercel.
+- Scope: 17 Prisma models covering shared multi-user accounts, budgets, categories, cards, split and recurring transactions, savings with pockets and allocations, notifications, and password reset. Includes Stripe subscriptions, email via Resend, and web push notifications.
+- Tech: T3-stack (Next.js, React, TypeScript, TailwindCSS), Auth.js, Prisma, PostgreSQL (Neon), TanStack, Stripe, Resend, web-push, Recharts, React Hook Form, Zod, Vitest, Docker, pnpm, Vercel.
 - Demo: Public demo at https://ronin-nine.vercel.app/sign-in using email demo@ronin.com and password demo123.
 
 My Portfolio
@@ -107,17 +120,20 @@ Agave – Painting & Epoxy Business Site (Webflow)
 EXAMPLE RECRUITER/HIRING MANAGER Q&A (adapt as needed)
 ----------------------------------------
 
-Q: Can you describe your experience at CoreCast? / What do you do in your current role?
-A: I'm a Full Stack Software Engineer at CoreCast. I helped develop the product from early stages through initial launch—the platform is now live. I've built Stripe-based subscription infrastructure for organization-level billing and plan tiers, implemented auth and multi-tenant org management with Clerk, and developed features on a Next.js and Node.js stack. Right now I'm focused on supporting the live product and working to onboard and acquire customers.
+Q: What do you do in your current role? / Can you describe your experience at Belle?
+A: I'm a Full Stack Software Engineer at Belle Health, a telehealth company, and the top contributor to our patient platform. I work across the whole stack: Next.js apps, Supabase Postgres, and Deno edge functions. I built our in-house intake funnel, the checkout, promo, credit, rewards, and affiliate systems, and a care inbox for our clinical staff. A lot of my work is about keeping patient data safe, through PHI safeguards backed by a 200-check CI suite.
+
+Q: Can you describe your experience at CoreCast?
+A: I was a Full Stack Software Engineer at CoreCast and helped develop the product from early stages through launch. I built Stripe-based subscription infrastructure for organization-level billing and plan tiers, implemented auth and multi-tenant org management with Clerk, and developed features on a Next.js and Node.js stack.
 
 Q: Can you describe your experience at Renew Biotechnologies?
 A: I worked across multiple subsidiaries including Wasatch BioLabs and Resonant. I developed full-stack applications on AWS, led a 3-engineer team, and helped reduce costs and deployment time by implementing performance and cloud optimizations.
 
 Q: What technologies are you most comfortable with?
-A: I'm confident working with React, TypeScript, Next.js, TailwindCSS, Node.js, and PostgreSQL. In my current role I use Clerk for auth, Stripe for subscriptions, Drizzle as an ORM, and deploy on Neon and Fly.io. I also have strong experience with AWS (Lambda, S3, DynamoDB, Cognito), Terraform, Firebase, and authentication systems like NextAuth.
+A: I'm confident working with React, TypeScript, Next.js, TailwindCSS, Node.js, and PostgreSQL. In my current role I use Supabase (Postgres, edge functions, RLS), Deno, Stripe, Intercom, and PostHog, deployed on Vercel. At CoreCast I used Clerk, Drizzle, Neon, and Fly.io. I also have strong experience with AWS (Lambda, S3, DynamoDB, Cognito), Terraform, Firebase, and authentication systems like NextAuth.
 
 Q: Can you explain a time you improved a system's efficiency?
-A: At Wasatch BioLabs, I optimized PostgreSQL query performance and implemented intelligent S3 storage tiering, which reduced both load times and storage costs significantly.
+A: At Belle, I used pg_stat_statements to find that six background jobs were consuming 90% of our production database time by paging through a large import table with LIMIT/OFFSET. I replaced them with keyset scans and partial indexes, which took that load off the database that every admin page depended on. Earlier, at Wasatch BioLabs, I optimized PostgreSQL query performance and implemented intelligent S3 storage tiering, which reduced both load times and storage costs significantly.
 
 Q: What’s an example of your work on a HIPAA-compliant system?
 A: At Resonant, I developed a secure health portal from the ground up. I deployed HIPAA/PHI-compliant AWS infrastructure using Terraform and ensured secure access with OpenVPN. The system enabled patients to onboard and manage records safely.
